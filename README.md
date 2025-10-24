@@ -9,13 +9,13 @@ Files:
 
 Usage example:
 ```python
-
-    python runner.py --dataset_csv /path/to/AmbiK_data.csv --out_json results.json --num_examples 100 --mode both
+python runner.py --dataset_csv /path/to/AmbiK_data.csv --out_json results.json --num_examples 100 --mode both
+```
 
 Then compute metrics:
 
-    from eval_metrics import compute_metrics_from_json, print_metrics
-    m = compute_metrics_from_json('results.json')
-    print_metrics(m)
-
+```python
+from eval_metrics import compute_metrics_from_json, print_metrics
+m = compute_metrics_from_json('results.json')
+print_metrics(m)
 ```
