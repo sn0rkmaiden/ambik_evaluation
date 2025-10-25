@@ -118,9 +118,9 @@ if __name__ == '__main__':
     print(">>> Loading LLM")
     model_name = args.model_name
     if model_name == "qwen":
-        model = CustomLLM()
+        model = CustomLLM(model_name, cache=f'log/{model_name}_cache.pkl')
     elif 'gemma' in model_name.lower():
-        model = HuggingFaceLLM(model_name)
+        model = HuggingFaceLLM(model_name, cache=f"log/{model_name}_cache.pkl")
     else:
         raise ValueError(f"Unknown model name: {model_name}")
     
