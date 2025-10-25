@@ -1,7 +1,7 @@
 import openai
 from openai import OpenAI
 import os, re, json
-from log import llm_log
+from utils.log import llm_log
 import time
 import torch
 from transformer_lens import HookedTransformer
