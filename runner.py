@@ -1,10 +1,14 @@
 
-import argparse, json, os
+import argparse, json, os, re
 import pandas as pd
 from llm import CustomLLM, HuggingFaceLLM
 from provider import ProviderAgent
 from text_matching import best_match_score, normalize_text
 import ast
+
+def extractJSON(raw_output):
+    match = re.search(r'\{.*\}', raw_output, re.DOTALL)
+    return match.group(0)
 
 def data2prompt(environment, ambiguous):
     prompt = "\n".join(open("data/prompt_draft.txt").readlines())
@@ -19,7 +23,7 @@ def get_model_questions(model, instruction, max_q=3):
     out, _ = model.request(instruction, None, json_format=True)
 
     try:
-        return json.loads(out)
+        return json.loads(extractJSON(out))
     except json.JSONDecodeError:
         try:
             obj = ast.literal_eval(out)
