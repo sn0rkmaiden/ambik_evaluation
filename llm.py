@@ -4,13 +4,13 @@ import os, re, json
 from utils.log import llm_log
 import time
 import torch
-from transformer_lens import HookedTransformer
-from sae_lens import SAE
-
 import pickle
 from collections import OrderedDict
 from transformer_lens import HookedTransformer
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 from sae_lens import SAE
+from langchain_nebius import ChatNebius
+from openai import OpenAI
 
 class LLM:
     def __init__(self, cache = None) -> None:
@@ -297,17 +297,11 @@ class HookedGEMMA(LLM):
         message.append({"role": "assistant", "content": assistant_text})
         return assistant_text, message
 
-import os
-import time
-import json
-from langchain_nebius import ChatNebius
-from openai import OpenAI  # or whichever OpenAI‐wrapper you use
-
 class CustomLLM(LLM):
     def __init__(self, name, api_key=None, cache=None) -> None:
         super().__init__(cache)
         name = name.strip().lower()
-        # set api_key early
+        
         self.api_key = api_key if api_key is not None else os.getenv("HF_TOKEN")
         # print(f"api_key is {self.api_key}, model name is {name}")
 
@@ -426,8 +420,6 @@ class CustomLLM(LLM):
 
 class HuggingFaceLLM(LLM):
     def __init__(self, name, cache=None):
-        from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
-
         # Set deterministic behavior
         # torch.manual_seed(8848)
         # torch.cuda.manual_seed_all(8848)
@@ -456,7 +448,6 @@ class HuggingFaceLLM(LLM):
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
     def request(self, prompt, stop=None, **kwargs):
-        import torch
 
         if self.is_chat_version:
             if 'previous_message' in kwargs:
