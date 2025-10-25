@@ -1,6 +1,19 @@
 We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
 We: Apart from that, in the kitchen there is <DESCRIPTION>.
 We: You have received the task “<TASK>“. 
-Predict whether the task contains ambiguity or not. If it does, then generate an appropriate clarifying question (questions).
-Return ONLY a JSON object containing an 'ambiguous' key, whose value is a boolean: True indicates that instruction is ambiguous, otherwise False; and a 'question' key, whose value is a Python list of strings - clarifying questions (one or more) if they are needed to resolve the task. The format should be as follows: {{ 'ambiguous': False, 'question': []}}.
-Do NOT return any other text.
+
+Your goal is to decide whether this task is ambiguous and, if so, generate clarifying question(s) that would help you perform it correctly.
+
+Respond with a single valid JSON object in this exact format:
+
+{
+  "ambiguous": <true_or_false>,
+  "questions": [<list_of_clarifying_questions_if_any>]
+}
+
+Rules:
+1. If the task is **not ambiguous**, set `"ambiguous": false` and `"questions": []`.
+2. If the task **is ambiguous**, set `"ambiguous": true` and `"questions"` to a list of one or more clarifying questions.
+3. **Never** include any other text, explanation, or commentary outside the JSON.
+4. Ensure the JSON is syntactically valid and uses lowercase true/false (not capitalized).
+5. It is **not allowed** to produce questions when `"ambiguous"` is false.

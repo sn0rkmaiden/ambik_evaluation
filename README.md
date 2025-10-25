@@ -1,12 +1,12 @@
 # Evaluation pipeline for AmbiK dataset with SAE steering experiments
 
 Files:
-- llm.py: contains LLM classes
-- runner.py: runs evaluation and writes results JSON
-- provider.py: simple scripted provider
-- text_matching.py: matching utilities
-- eval_metrics.py: computes statistics from results JSON
-
+- `llm.py`: contains LLM classes
+- `runner.py`: runs evaluation and writes results JSON
+- `provider.py`: simple scripted provider
+- `text_matching.py`: matching utilities
+- `eval_metrics.py`: computes statistics from results 
+- `data/`: contains data from [AmbiK](https://github.com/cog-model/AmbiK-dataset) 
 
 ## How to run
 
@@ -17,7 +17,7 @@ pip install sae-lens transformer-lens sae-dashboard sentence_transformers langch
 
 Usage example:
 ```python
-python runner.py --dataset_csv /path/to/AmbiK_data.csv --out_json results.json --num_examples 100 --mode both
+python runner.py --dataset_csv /path/to/AmbiK_data.csv --out_json results/output.json --num_examples 100 --mode both
 ```
 Results are saved to `results/` folder.
 Then compute metrics:
