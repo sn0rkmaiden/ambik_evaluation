@@ -2,4 +2,4 @@ We: You are a robot operating in an office kitchen. You are in front of a counte
 We: Apart from that, in the kitchen there is <DESCRIPTION>.
 We: You have received the task “<TASK>“. 
 Predict whether the task contains ambiguity or not. If it does, then generate an appropriate clarifying question (questions).
-Return a JSON object containing an 'ambiguous' key, whose value is a boolean: True indicates that instruction is ambiguous, otherwise False; and a 'question' key, whose value is a list of clarifying questions (one or more) if they are needed to resolve the task. The format should be as follows: {{ 'ambiguous': False, 'question': []}}.
+Return a JSON object containing an 'ambiguous' key, whose value is a boolean: True indicates that instruction is ambiguous, otherwise False; and a 'question' key, whose value is a list of clarifying questions (one or more) if they are needed to resolve the task. The format should be as follows: {{ 'ambiguous': False, 'question': [*a list of questions if they exist*]}}.

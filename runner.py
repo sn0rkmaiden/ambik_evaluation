@@ -39,7 +39,7 @@ def get_model_questions(model, instruction, max_q=3):
             print("Raw response:\n", repr(out))
             raise
 
-def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='output/', num_examples=None, seed=0, mode='proxy', model=None):
+def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eval_output.json', num_examples=None, seed=0, mode='proxy', model=None):
 
     print(">>> Reading data")
     df = pd.read_csv(dataset_csv)
@@ -109,8 +109,6 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='output/', num_exa
 
         results.append(example)
     # save JSON
-    if not os.path.exists(out_json):
-        os.makedirs(out_json)
     with open(out_json, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
     print(f"Saved results to {out_json} ({len(results)} examples)")
@@ -141,8 +139,8 @@ if __name__ == '__main__':
         dataset_path = args.dataset_csv
     
     if args.out_json is None:
-        output_dir = "output/"
+        output_file = "results/ambik_eval_output.json"
     else:
-        output_dir = args.out_json
+        output_file = args.out_json
 
-    run_eval(dataset_path, output_dir, num_examples=args.num_examples, seed=args.seed, mode=args.mode, model=model)
+    run_eval(dataset_path, output_file, num_examples=args.num_examples, seed=args.seed, mode=args.mode, model=model)
