@@ -69,7 +69,8 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
         else:
             res = get_model_questions(model, instruction)
             model_questions = res['question']
-            assert isinstance(model_questions, list)
+            if not isinstance(model_questions, list):
+                model_questions = []
 
             is_amb = res['ambiguous'] # TODO add metric for checking binary ambiguity
 
