@@ -8,12 +8,23 @@ Return your final answer **only** as a JSON object in the following format:
 
 {
   "ambiguous": true or false,
-  "questions": ["question 1", "question 2", ...]
+  "question": ["question 1", "question 2", ...]
 }
 
 Formatting rules:
 - Always output exactly one JSON object.
-- If the task is **not ambiguous**, use `"ambiguous": false` and `"questions": []`.
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
 - If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
 - Never output explanations or text outside the JSON.
 - If unsure, make your best judgment and still output a valid JSON.
+
+Example:
+Task: "Put the red cup away."
+Output:
+{
+  "ambiguous": true,
+  "questions": ["Where should I put the red cup? In which drawer or on the counter?"]
+}
+
+Now analyze the following task:
+"<TASK>"
