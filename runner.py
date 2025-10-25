@@ -14,6 +14,8 @@ def data2prompt(environment, ambiguous):
 
 def get_model_questions(model, instruction, max_q=3):
 
+    instruction += "\nReturn **only** a valid JSON object without any extra text."
+
     out, _ = model.request(instruction, None, json_format=True)
 
     try:
