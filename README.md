@@ -7,11 +7,19 @@ Files:
 - text_matching.py: matching utilities
 - eval_metrics.py: computes statistics from results JSON
 
+
+## How to run
+
+Install required dependencies:
+```python
+pip install sae-lens transformer-lens sae-dashboard sentence_transformers langchain_nebius
+```
+
 Usage example:
 ```python
 python runner.py --dataset_csv /path/to/AmbiK_data.csv --out_json results.json --num_examples 100 --mode both
 ```
-
+Results are saved to `results/` folder.
 Then compute metrics:
 
 ```python

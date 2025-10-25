@@ -109,6 +109,7 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
 
         results.append(example)
     # save JSON
+    os.makedirs("results", exist_ok=True)
     with open(out_json, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
     print(f"Saved results to {out_json} ({len(results)} examples)")
