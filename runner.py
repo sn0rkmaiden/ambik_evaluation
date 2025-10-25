@@ -1,7 +1,7 @@
 
 import argparse, json
 import pandas as pd
-from llm import CustomLLM, HuggingfaceLLM
+from llm import CustomLLM, HuggingFaceLLM
 from provider import ProviderAgent
 from text_matching import best_match_score, normalize_text
 import ast
@@ -30,6 +30,7 @@ def get_model_questions(model, instruction, max_q=3):
 
 def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='output/', num_examples=None, seed=0, mode='proxy', model=None):
 
+    print(">>> Reading data")
     df = pd.read_csv(dataset_csv)
     if num_examples is not None:
         df = df.sample(n=min(num_examples, len(df)), random_state=seed).reset_index(drop=True)
@@ -105,19 +106,19 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='output/', num_exa
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', required=True)
-    parser.add_argument('--dataset_csv', required=True)
-    parser.add_argument('--out_json', required=True)
     parser.add_argument('--num_examples', type=int, default=None)
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--mode', choices=['proxy','dialog','both'], default='both')
+    parser.add_argument('--dataset_csv', required=False)
+    parser.add_argument('--out_json', required=False)
     args = parser.parse_args()
 
-    
+    print(">>> Loading LLM")
     model_name = args.model_name
     if model_name == "qwen":
         model = CustomLLM()
     elif 'gemma' in model_name.lower():
-        model = HuggingfaceLLM(model_name)
+        model = HuggingFaceLLM(model_name)
     else:
         raise ValueError(f"Unknown model name: {model_name}")
     
