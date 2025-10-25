@@ -68,7 +68,7 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
             model_questions = []
         else:
             res = get_model_questions(model, instruction)
-            model_questions = res['question'] if res != "" else ""
+            model_questions = res['questions'] if res != "" else ""
             if not isinstance(model_questions, list):
                 model_questions = []
 
