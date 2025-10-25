@@ -7,7 +7,7 @@ import ast
 
 def extractJSON(raw_output):
     match = re.search(r'\{.*\}', raw_output, re.DOTALL)
-    return match.group(0)
+    return match.group(0) if match is not None else "" 
 
 def data2prompt(environment, ambiguous):
     prompt = "\n".join(open("data/prompt_draft.txt").readlines())
