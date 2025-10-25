@@ -27,6 +27,7 @@ def get_model_questions(model, instruction, max_q=3):
     print(f"postprocess: {out}")
 
     try:
+        if out == "": return ""
         return json.loads(out)
     except json.JSONDecodeError:
         try:
@@ -67,11 +68,11 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
             model_questions = []
         else:
             res = get_model_questions(model, instruction)
-            model_questions = res['question']
+            model_questions = res['question'] if res != "" else ""
             if not isinstance(model_questions, list):
                 model_questions = []
 
-            is_amb = res['ambiguous'] # TODO add metric for checking binary ambiguity
+            is_amb = res['ambiguous'] if res != "" else "" # TODO add metric for checking binary ambiguity
 
         example['model_questions'] = model_questions
         example['num_questions'] = len(model_questions)
