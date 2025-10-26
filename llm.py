@@ -302,11 +302,10 @@ class CustomLLM(LLM):
         super().__init__(cache)
         name = name.strip().lower()
         
-        self.api_key = api_key if api_key is not None else os.getenv("HF_TOKEN")
         # print(f"api_key is {self.api_key}, model name is {name}")
-
         # route depending on name
         if name == "deepseek":
+            self.api_key = api_key if api_key is not None else os.getenv("HF_TOKEN")
             self.model_name = "deepseek-ai/DeepSeek-V3:nebius"
             # Use OpenAI client (via base_url) for this provider
             self.client_type = "openai"
@@ -316,6 +315,7 @@ class CustomLLM(LLM):
             )
 
         elif name == "qwen":
+            self.api_key = api_key if api_key is not None else os.getenv("NEBIUS_API_KEY")
             self.model_name = "Qwen/Qwen3-235B-A22B-Instruct-2507"
             # Choose to use ChatNebius for this provider
             self.client_type = "nebius"

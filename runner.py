@@ -5,6 +5,9 @@ from provider import ProviderAgent
 from text_matching import best_match_score, normalize_text
 import ast
 
+from dotenv import load_dotenv
+load_dotenv()
+
 def extractJSON(raw_output):
     match = re.search(r'\{.*\}', raw_output, re.DOTALL)
     return match.group(0) if match is not None else "" 

@@ -17,13 +17,13 @@ pip install sae-lens transformer-lens sae-dashboard sentence_transformers langch
 
 Usage example:
 ```python
-python runner.py --dataset_csv /path/to/AmbiK_data.csv --out_json results/output.json --num_examples 100 --mode both
+python runner.py --model_name qwen --dataset_csv /path/to/AmbiK_data.csv --out_json results/output.json --num_examples 100 --mode both
 ```
 Results are saved to `results/` folder.
 Then compute metrics:
 
 ```python
 from eval_metrics import compute_metrics_from_json, print_metrics
-m = compute_metrics_from_json('results.json')
+m = compute_metrics_from_json('results/output.json')
 print_metrics(m)
 ```
