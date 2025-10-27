@@ -1,4 +1,3 @@
-
 import json
 from collections import Counter, defaultdict
 from text_matching import best_match_score

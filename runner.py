@@ -8,6 +8,41 @@ import ast
 from dotenv import load_dotenv
 load_dotenv()
 
+def build_final_prompt(instruction: str, clarifying_questions: list[str], provider_reply: str | None) -> str:
+    """
+    Build the final prompt for the robot model to generate a plan of actions.
+    """
+
+    prompt_parts = [
+        "You are a service robot operating in an office kitchen.",
+        f"Your initial instruction was: '{instruction.strip()}'."
+    ]
+
+    if clarifying_questions:
+        questions_text = "\n".join(
+            [f"{i+1}. {q.strip()}" for i, q in enumerate(clarifying_questions) if q.strip()]
+        )
+        prompt_parts.append(
+            "To better understand the task, you asked the following clarifying question(s):\n" + questions_text
+        )
+        if provider_reply:
+            prompt_parts.append(f"The human responded with: '{provider_reply.strip()}'")
+        prompt_parts.append(
+            "Now that the ambiguity has been resolved, generate your final plan of actions as the robot. "
+            "Be specific about what you will do to execute the clarified instruction. "
+            "Return only the plan, without any additional explanations or comments."
+        )
+    else:
+        prompt_parts.append(
+            "The instruction is clear and requires no clarification. "
+            "Generate your plan of actions as the robot. "
+            "Be specific about what you will do to execute the instruction. "
+            "Return only the plan, without any additional explanations or comments."
+        )
+
+    return "\n\n".join(prompt_parts)
+
+
 def extractJSON(raw_output):
     match = re.search(r'\{.*\}', raw_output, re.DOTALL)
     return match.group(0) if match is not None else "" 
@@ -24,10 +59,10 @@ def get_model_questions(model, instruction, max_q=3):
 
     out, _ = model.request(instruction, None, json_format=True)
 
-    print(f"model's output\n{out}")
+    # print(f"model's output\n{out}")
     
     out = extractJSON(out)
-    print(f"postprocess: {out}")
+    print(f"processed output: {out}")
 
     try:
         if out == "": return ""
@@ -93,29 +128,21 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
         example['model_question_best_similarity'] = best_score
         example['resolved_proxy'] = best_score >= 0.75
 
-        # dialog mode: provider replies with gold answer, then model optionally produces final action
         example['dialog'] = None
-        if mode in ('dialog', 'both'):
+        if mode in ('dialog', 'both') and model_questions:
             prov_reply = provider.reply(example['gold_answer'])
             dialog_record = {'provider_answers': [prov_reply], 'model_final_action': None, 'resolved_dialog': None}
-            # try to get final action from model via generate_final_action or similar
             final_action = None
             if model is not None:
-                if hasattr(model, 'generate_final_action'):
-                    final_action = model.generate_final_action(ambiguous, history=[prov_reply])
-                elif hasattr(model, 'generate_action'):
-                    final_action = model.generate_action(ambiguous, history=[prov_reply])
-                else:
-                    # no method: leave None
-                    final_action = None
+                prompt = build_final_prompt(instruction, model_questions, prov_reply)
+                final_action = model.request(prompt, None, json_format=True)
             dialog_record['model_final_action'] = final_action
-            # check resolution against gold plan_for_clear
             if final_action:
                 dialog_record['resolved_dialog'] = best_match_score(final_action, example['gold_plan_for_clear']) >= 0.75
             example['dialog'] = dialog_record
 
         results.append(example)
-    # save JSON
+    
     os.makedirs("results", exist_ok=True)
     with open(out_json, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
