@@ -1,6 +1,6 @@
 import argparse, json, os, re
 import pandas as pd
-from llm import CustomLLM, HuggingFaceLLM
+from llm import CustomLLM, HuggingFaceLLM, HookedGEMMA
 from provider import ProviderAgent
 from text_matching import best_match_score, normalize_text
 import ast
@@ -149,7 +149,7 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
     print(f"Saved results to {out_json} ({len(results)} examples)")
     return out_json
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', required=True)
     parser.add_argument('--num_examples', type=int, default=None)
@@ -157,25 +157,68 @@ if __name__ == '__main__':
     parser.add_argument('--mode', choices=['proxy','dialog','both'], default='both')
     parser.add_argument('--dataset_csv', required=False)
     parser.add_argument('--out_json', required=False)
+    parser.add_argument('--use_steering', action='store_true',
+                        help='Enable SAE steering for Gemma (HookedTransformer path)')
+    parser.add_argument('--steering_feature', type=int, default=None,
+                        help='SAE feature index to steer (int)')
+    parser.add_argument('--steering_strength', type=float, default=1.0,
+                        help='Steering strength multiplier')
+    parser.add_argument('--sae_release', type=str, default='gemma-2b-it-res-jb',
+                        help='SAE release name for SAE.from_pretrained')
+    parser.add_argument('--sae_id', type=str, default='blocks.12.hook_resid_post',
+                        help='SAE id / hook name for SAE.from_pretrained')
+    parser.add_argument('--max_act', type=float, default=None,
+                        help='Fixed max activation to use (skip per-prompt estimation)')
+    parser.add_argument('--compute_max_per_turn', action='store_true',
+                        help='Estimate max activation from each prompt (no ActivationStore needed)')
+    parser.add_argument('--gemma_model', type=str, default='gemma-2b-it',
+                        help='HookedTransformer checkpoint name (e.g., gemma-2b-it)')
+
     args = parser.parse_args()
 
     print(">>> Loading LLM")
-    model_name = args.model_name
-    if model_name == "qwen":
+    model_name = args.model_name.strip()
+
+    # --- Model selection ---
+    if model_name.lower() == "qwen":
         model = CustomLLM(model_name, cache=f'log/{model_name}_cache.pkl')
+
+    elif 'gemma' in model_name.lower() and (args.use_steering or args.steering_feature is not None):
+        model = HookedGEMMA(
+            model_name=args.gemma_model,
+            sae_release=args.sae_release,
+            sae_id=args.sae_id,
+            cache="log/gemma_cache.pkl",
+            max_new_tokens=100,
+            steering_feature=args.steering_feature,
+            steering_strength=args.steering_strength,
+            max_act=(args.max_act if args.max_act is not None else None),
+            compute_max_per_turn=args.compute_max_per_turn,
+        )
+
     elif 'gemma' in model_name.lower():
         model = HuggingFaceLLM(model_name, cache="log/gemma_cache.pkl")
+
     else:
         raise ValueError(f"Unknown model name: {model_name}")
-    
+
+    # --- IO paths ---
     if args.dataset_csv is None:
         dataset_path = "data/ambik_calib_100.csv"
     else:
         dataset_path = args.dataset_csv
-    
+
     if args.out_json is None:
         output_file = "results/ambik_eval_output.json"
     else:
         output_file = args.out_json
 
-    run_eval(dataset_path, output_file, num_examples=args.num_examples, seed=args.seed, mode=args.mode, model=model)
+    # --- Run evaluation ---
+    run_eval(
+        dataset_path,
+        output_file,
+        num_examples=args.num_examples,
+        seed=args.seed,
+        mode=args.mode,
+        model=model
+    )
