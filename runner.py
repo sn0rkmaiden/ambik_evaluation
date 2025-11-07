@@ -4,6 +4,7 @@ from llm import CustomLLM, HuggingFaceLLM, HookedGEMMA
 from provider import ProviderAgent
 from text_matching import best_match_score, normalize_text
 import ast
+from utils.parsing import *
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -53,7 +54,7 @@ def data2prompt(environment, ambiguous):
     prompt = prompt.replace('<TASK>', ambiguous)
     return prompt
 
-def get_model_questions(model, instruction, max_q=3):
+def get_model_questions2(model, instruction, max_q=3):
 
     instruction += "\nReturn **only** a valid JSON object without any extra text."
 
@@ -76,6 +77,21 @@ def get_model_questions(model, instruction, max_q=3):
             print("Prompt was:\n", instruction)
             print("Raw response:\n", repr(out))
             raise
+
+def get_model_questions(model, instruction, max_q=3):
+    instruction += "\nReturn **only** a valid JSON object without any extra text."
+
+    out, _ = model.request(instruction, None, json_format=True)
+
+    obj = parse_model_json(out)
+    if obj is None:
+        print("JSON decode error.")
+        print("Prompt was:\n", instruction)
+        print("Raw response:\n", repr(out))
+        # You can choose to raise, or return a default
+        raise ValueError("Failed to parse model JSON.")
+    return obj
+
 
 def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eval_output.json', num_examples=None, seed=0, mode='proxy', model=None):
 
