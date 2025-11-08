@@ -81,6 +81,10 @@ def get_model_questions2(model, instruction, max_q=3):
 def get_model_questions(model, instruction, max_q=3):
     instruction += "\nReturn **only** a valid JSON object without any extra text."
 
+    print('------------INSTRUCTION--------------')
+    print(instruction)
+    print('------------INSTRUCTION--------------')
+
     out, _ = model.request(instruction, None, json_format=True)
 
     print('------------RAW OUTPUT--------------')
@@ -123,6 +127,8 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
         example['gold_plan_for_clear'] = row.get('plan_for_clear_task', '') if 'plan_for_clear_task' in row else ''
 
         instruction = data2prompt(env, ambiguous)
+
+        print(f"TYPE: {example['ambiguity_type']}")
 
         # get model questions
         if model is None:
