@@ -196,7 +196,6 @@ if __name__ == "__main__":
                         help='Estimate max activation from each prompt (no ActivationStore needed)')
     parser.add_argument('--gemma_model', type=str, default='gemma-2b-it',
                         help='HookedTransformer checkpoint name (e.g., gemma-2b-it)')
-    parser.add_argument('--seed', type=int, default=0)
 
     args = parser.parse_args()
 
@@ -245,5 +244,4 @@ if __name__ == "__main__":
         seed=args.seed,
         mode=args.mode,
         model=model,
-        seed=args.seed
     )
