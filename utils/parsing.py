@@ -83,106 +83,186 @@ import json, re, ast
 #         except Exception:
 #             return None
 
-# --- robust_json.py (or paste into runner.py) ---
 import re, json, ast
 
-def _strip_fences(s: str) -> str:
-    """Prefer the fenced block with braces; otherwise remove lone fences and <eos>."""
+# -------------------- helpers to sanitize the raw text --------------------
+
+def _strip_fences_and_eos(s: str) -> str:
+    """Remove ``` fences, optional ```json, and <eos>. Prefer fenced JSON if present."""
     s = s.replace("<eos>", "").strip()
 
-    # Prefer a fenced block that actually contains JSON braces
-    best = None
-    for m in re.finditer(r"```(?:json)?\s*(.*?)\s*```", s, flags=re.S | re.I):
-        chunk = m.group(1).strip()
-        if "{" in chunk and "}" in chunk:
-            best = chunk
-            break
-    if best is not None:
-        return best
+    # Prefer a fenced block that actually contains braces
+    m = re.search(r"```(?:json)?\s*(\{[\s\S]*?\})\s*```", s, flags=re.I)
+    if m:
+        return m.group(1).strip()
 
-    # If no fenced block, strip lone fences and return whole string
+    # Otherwise remove any stray fences and return whole
     s = re.sub(r"```(?:json)?", "", s, flags=re.I)
     s = s.replace("```", "")
     return s.strip()
 
-def _extract_balanced_json_candidates(text: str):
-    """Yield every balanced {...} substring (strings-aware)."""
+def _first_curly_to_end(s: str) -> str | None:
+    """Return text starting from first '{' (inclusive)."""
+    i = s.find("{")
+    return s[i:] if i != -1 else None
+
+# -------------------- main tolerant parser --------------------
+
+def parse_model_json(raw_output: str) -> dict | None:
+    """
+    Robust, schema-aware parse for:
+      {
+        "ambiguous": true|false,
+        "question": [ "...", "...", ... ]
+      }
+
+    Tolerates:
+    - pre/post text (instructions), code fences, <eos>
+    - trailing commas, Python literals (True/False/None)
+    - missing closing ']' and/or '}' (truncated output)
+    - last list item missing a closing quote
+    """
+    # 0) strip noise and get from first brace onward
+    body = _strip_fences_and_eos(raw_output)
+    body = _first_curly_to_end(body) or body
+
+    # 1) Try strict JSON first
+    try:
+        obj = json.loads(body)
+        return obj if isinstance(obj, dict) else None
+    except Exception:
+        pass
+
+    # 2) Quick repairs: trailing commas, python literals
+    repaired = re.sub(r',(\s*[}\]])', r'\1', body)  # trailing commas
+    repaired = re.sub(r'\bTrue\b', 'true', repaired)
+    repaired = re.sub(r'\bFalse\b', 'false', repaired)
+    repaired = re.sub(r'\bNone\b', 'null', repaired)
+
+    # 3) If braces/brackets are unbalanced, try to heal by appending the missing closers.
+    repaired = _balance_closers(repaired)
+
+    # 4) Try JSON again
+    try:
+        obj = json.loads(repaired)
+        if isinstance(obj, dict):
+            return obj
+    except Exception:
+        pass
+
+    # 5) Schema-guided extraction (works even if truncated mid-string)
+    return _schema_parse_fallback(repaired)
+
+# -------------------- balancing + fallback --------------------
+
+def _balance_closers(s: str) -> str:
+    """Append missing ] or } at the end if counts don't match (string-aware)."""
     in_str = False
     esc = False
-    depth = 0
-    start = None
-    for i, ch in enumerate(text):
+    braces = brackets = 0
+    for ch in s:
         if ch == '"' and not esc:
             in_str = not in_str
         esc = (ch == '\\' and not esc) if in_str else False
         if in_str:
             continue
-        if ch == '{':
-            if depth == 0:
-                start = i
-            depth += 1
-        elif ch == '}':
-            if depth > 0:
-                depth -= 1
-                if depth == 0 and start is not None:
-                    yield text[start:i+1]
+        if ch == '{': braces += 1
+        elif ch == '}': braces -= 1 if braces > 0 else 0
+        elif ch == '[': brackets += 1
+        elif ch == ']': brackets -= 1 if brackets > 0 else 0
 
-def _repair_common(s: str) -> str:
-    # remove trailing commas like {"a":1,} or ["x",]
-    s = re.sub(r',(\s*[}\]])', r'\1', s)
-    # normalize Python-ish literals
-    s = re.sub(r'\bTrue\b', 'true', s)
-    s = re.sub(r'\bFalse\b', 'false', s)
-    s = re.sub(r'\bNone\b', 'null', s)
-    # balance ] if array brackets are short by a few
-    def _counts(t):
-        in_str = False; esc = False; ob=cb=osb=csb=0
-        for ch in t:
-            if ch == '"' and not esc: in_str = not in_str
-            esc = (ch == '\\' and not esc) if in_str else False
-            if in_str: continue
-            if ch == '{': ob += 1
-            elif ch == '}': cb += 1
-            elif ch == '[': osb += 1
-            elif ch == ']': csb += 1
-        return ob, cb, osb, csb
-    _, _, osb, csb = _counts(s)
-    missing_rb = osb - csb
-    if missing_rb > 0:
-        # insert missing ']' before the final closing '}'
-        j = len(s) - 1
-        while j >= 0 and s[j].isspace(): j -= 1
-        if j >= 0 and s[j] == '}':
-            s = s[:j] + (']' * missing_rb) + s[j:]
-        else:
-            s = s + (']' * missing_rb)
+    s = s.rstrip()
+    if brackets > 0:
+        s += ']' * brackets
+    if braces > 0:
+        s += '}' * braces
     return s
 
-def parse_model_json(raw_output: str) -> dict | None:
+def _schema_parse_fallback(text: str) -> dict | None:
     """
-    Try: strip fences -> extract first balanced {...} -> repair -> json.loads
-    Fallback: ast.literal_eval with Python tokens.
+    Last-resort: pull "ambiguous" and "question" with a tolerant scanner.
+    Handles truncated last string in the list.
     """
-    body = _strip_fences(raw_output)
-    candidates = list(_extract_balanced_json_candidates(body))
-    if not candidates and "{" in body and "}" in body:
-        candidates = [body[body.find("{"): body.rfind("}")+1]]
+    # ambiguous: true/false
+    m = re.search(r'"ambiguous"\s*:\s*(true|false)', text, flags=re.I)
+    if m:
+        ambiguous = (m.group(1).lower() == "true")
+    else:
+        # default to False if missing
+        ambiguous = False
 
-    for frag in candidates or [body]:
-        s = _repair_common(frag.strip())
-        try:
-            val = json.loads(s)
-            if isinstance(val, dict):
-                return val
-        except Exception:
-            pyish = (s.replace('null', 'None')
-                       .replace('true', 'True')
-                       .replace('false', 'False'))
-            try:
-                val = ast.literal_eval(pyish)
-                if isinstance(val, dict):
-                    return val
-            except Exception:
-                continue
-    return None
+    # question: [ ... ]
+    q_start = re.search(r'"question"\s*:\s*\[', text, flags=re.I)
+    questions = []
+    if q_start:
+        i = q_start.end()
+        questions, _ = _scan_string_list(text, i)
+
+    return {"ambiguous": ambiguous, "question": questions}
+
+def _scan_string_list(s: str, i: int):
+    """
+    Parse a JSON-like list of strings starting at index i (first char AFTER '[').
+    Tolerates missing closing quote or ']' and basic escapes.
+    Returns (list, end_index).
+    """
+    items = []
+    n = len(s)
+    cur = []
+    in_str = False
+    esc = False
+
+    while i < n:
+        ch = s[i]
+
+        if in_str:
+            if esc:
+                cur.append(ch)
+                esc = False
+            elif ch == '\\':
+                esc = True
+            elif ch == '"':
+                in_str = False
+                items.append(''.join(cur))
+                cur = []
+            else:
+                cur.append(ch)
+            i += 1
+            continue
+
+        # not in string
+        if ch == '"':
+            in_str = True
+            esc = False
+            i += 1
+            continue
+        if ch == ',':
+            # separator between items; if we had a truncated string w/o closing quote, flush it
+            if cur:
+                items.append(''.join(cur))
+                cur = []
+            i += 1
+            continue
+        if ch == ']':
+            # end of list
+            if cur:
+                items.append(''.join(cur))
+                cur = []
+            i += 1
+            break
+        if ch == '{' or ch == '}':
+            # list ended abruptly (truncated before ']')
+            if cur:
+                items.append(''.join(cur))
+            break
+
+        # skip whitespace/other
+        i += 1
+
+    # strip whitespace around items
+    items = [x.strip() for x in items if x is not None]
+    # Remove empty strings created by truncation noise
+    items = [x for x in items if x != ""]
+    return items, i
+
 
