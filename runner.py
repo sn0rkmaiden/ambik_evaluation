@@ -81,9 +81,9 @@ def get_model_questions2(model, instruction, max_q=3):
 def get_model_questions(model, instruction, max_q=3):
     instruction += "\nReturn **only** a valid JSON object without any extra text."
 
-    print('------------INSTRUCTION--------------')
-    print(instruction)
-    print('------------INSTRUCTION--------------')
+    # print('------------INSTRUCTION--------------')
+    # print(instruction)
+    # print('------------INSTRUCTION--------------')
 
     out, _ = model.request(instruction, None, json_format=True)
 
