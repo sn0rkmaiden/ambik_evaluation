@@ -90,6 +90,9 @@ def get_model_questions(model, instruction, max_q=3):
         print("Raw response:\n", repr(out))
         # You can choose to raise, or return a default
         raise ValueError("Failed to parse model JSON.")
+    
+    obj.setdefault("ambiguous", False)
+    obj.setdefault("question", [])
     return obj
 
 
