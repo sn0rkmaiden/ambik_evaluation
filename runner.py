@@ -83,6 +83,10 @@ def get_model_questions(model, instruction, max_q=3):
 
     out, _ = model.request(instruction, None, json_format=True)
 
+    print('------------RAW OUTPUT--------------')
+    print(out)
+    print('------------RAW OUTPUT--------------')
+
     obj = parse_model_json(out)
     if obj is None:
         print("JSON decode error.")
