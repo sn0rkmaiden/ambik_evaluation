@@ -4,7 +4,32 @@ from collections import OrderedDict
 from typing import Any, Dict, List, Tuple, Optional
 
 import pandas as pd
-from eval_metrics import compute_metrics_from_json  # recomputes similarity with best_match_score
+from eval_metrics import compute_metrics_from_json 
+
+def coerce_dtypes(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+
+    # integers that can be missing → nullable Int64
+    for c in ["feature", "n_examples", "seed"]:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce").astype("Int64")
+
+    # booleans that can be missing → nullable boolean
+    for c in ["steering_used", "compute_max_per_turn"]:
+        if c in df.columns:
+            df[c] = df[c].astype("boolean")
+
+    # floats (keep NaN for undefined metrics)
+    for c in [
+        "strength","max_act",
+        "resolved_proxy_rate","avg_num_questions",
+        "necessity_precision","necessity_recall",
+        "resolved_dialog_rate","overall_weighted_score",
+    ]:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    return df
 
 
 def _load_json(path: str) -> Any:
@@ -122,6 +147,7 @@ def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.D
     df = pd.DataFrame(rows)
     # ensure column order even if some fields are missing in a row
     df = df.reindex(columns=cols)
+    df = coerce_dtypes(df)
     return df
 
 def main():
