@@ -53,7 +53,13 @@ Usage examples:
     --out_json results/ambik_eval_steered.json \
     --seed 123
     ```
-Results are saved to `results/` folder.
+Results are saved to `results/` folder. 
+
+> [!NOTE]  
+> It is recommended to delete model cache across multiple runs so cache would not be reused.
+>
+> For example, `!rm -f log/{cache filename}.pkl`.
+
 Then compute metrics:
 
 ```python
@@ -88,3 +94,4 @@ Example of output json:
     "overall_weighted_score": 0.41068595091501875
     }
 ```
+
