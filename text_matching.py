@@ -34,14 +34,28 @@ def embedding_similarity(a: str, b: str) -> float:
     # cosine
     return float(np.dot(v1, v2) / (norm(v1)*norm(v2)))
 
-def best_match_score(model_out: str, gold: str, threshold=0.75) -> float:
-    # exact/contains first
+def best_match_score(model_out: str, gold: str, threshold: float = 0.75, return_pass: bool = False):
+    """
+    Returns a similarity score in [0,1]. If return_pass=True, also returns a boolean flag
+    indicating score >= threshold.
+
+    Logic:
+      1) exact/contains -> 1.0 / 0.95
+      2) else embedding cosine if available
+      3) else 0.0
+    """
+    # Fast lexical path
     match, score = exact_contains_match(model_out, gold)
     if match:
-        return score
-    # embedding fallback
+        return (score, score >= threshold) if return_pass else score
+
+    # Semantic path
+    sim = 0.0
     try:
         sim = embedding_similarity(model_out, gold)
-        return sim
     except Exception:
-        return 0.0
+        # If EMBED_MODEL is None or encode fails, keep sim=0.0
+        pass
+
+    return (sim, sim >= threshold) if return_pass else sim
+
