@@ -154,12 +154,7 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
         example['ambiguous_instruction'] = ambiguous
         example['gold_question'] = row.get('question', '') if 'question' in row else ''
         example['gold_answer'] = row.get('answer', '') if 'answer' in row else ''
-        example['gold_plan_for_clear'] = row.get('plan_for_clear_task', '') if 'plan_for_clear_task' in row else ''
-
-        example['model_used'] = model_info            
-        example['steering_used'] = steering_used      
-        if steering_used:
-            example['steering'] = steering_cfg        
+        example['gold_plan_for_clear'] = row.get('plan_for_clear_task', '') if 'plan_for_clear_task' in row else ''     
 
         instruction = data2prompt(env, ambiguous)
 
@@ -207,9 +202,23 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
 
         results.append(example)
     
+    payload = {
+            "run_info": {
+                "dataset_csv": dataset_csv,
+                "output_json": out_json,
+                "seed": seed,
+                "mode": mode,
+                "num_examples": num_examples,
+                "model": model_info,
+                "steering_used": steering_used,
+                "steering": steering_cfg,
+            },
+            "examples": results
+        }
+    
     os.makedirs("results", exist_ok=True)
     with open(out_json, 'w', encoding='utf-8') as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2)
     print(f"Saved results to {out_json} ({len(results)} examples)")
     return out_json
 
