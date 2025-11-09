@@ -3,8 +3,8 @@ import argparse, json, os, sys
 from collections import OrderedDict
 from typing import Any, Dict, List, Tuple, Optional
 
-# reuse your existing metrics (it recomputes similarity with best_match_score)
-from eval_metrics import compute_metrics_from_json
+import pandas as pd
+from eval_metrics import compute_metrics_from_json  # recomputes similarity with best_match_score
 
 
 def _load_json(path: str) -> Any:
@@ -14,6 +14,7 @@ def _load_json(path: str) -> Any:
 def _extract_examples_and_meta(obj: Any, path: str) -> Tuple[List[Dict[str, Any]], Optional[Dict[str, Any]]]:
     """
     Returns (examples, run_info_or_None).
+    Expects the wrapped schema: {"run_info": {...}, "examples": [...]}
     """
     run_info = None
     if isinstance(obj, dict) and "examples" in obj:
@@ -49,6 +50,14 @@ def _model_and_steer_from_runinfo(run_info: Optional[Dict[str, Any]]) -> Tuple[s
         steering_cfg = run_info.get("steering") or {}
     return model_name, steering_used, steering_cfg
 
+def _round_or_none(x, nd=4):
+    if x is None:
+        return None
+    try:
+        return round(float(x), nd)
+    except Exception:
+        return None
+
 def _row_from_file(path: str, threshold: float) -> Dict[str, Any]:
     obj = _load_json(path)
     examples, run_info = _extract_examples_and_meta(obj, path)
@@ -83,76 +92,58 @@ def _row_from_file(path: str, threshold: float) -> Dict[str, Any]:
     row["seed"] = seed
     row["dataset"] = os.path.basename(dataset_csv) if dataset_csv else None
     row["n_examples"] = num_examples
-    row["resolved_proxy_rate"] = round(metrics.get("resolved_proxy_rate", 0.0), 4)
-    row["avg_num_questions"] = round(metrics.get("avg_num_questions", 0.0), 3)
-    row["necessity_precision"] = _round_or_none(metrics.get("necessity_precision"))
-    row["necessity_recall"] = _round_or_none(metrics.get("necessity_recall"))
-    row["resolved_dialog_rate"] = _round_or_none(metrics.get("resolved_dialog_rate"))
-    row["overall_weighted_score"] = _round_or_none(metrics.get("overall_weighted_score"))
+    row["resolved_proxy_rate"] = _round_or_none(metrics.get("resolved_proxy_rate"), 4)
+    row["avg_num_questions"] = _round_or_none(metrics.get("avg_num_questions"), 3)
+    row["necessity_precision"] = _round_or_none(metrics.get("necessity_precision"), 4)
+    row["necessity_recall"] = _round_or_none(metrics.get("necessity_recall"), 4)
+    row["resolved_dialog_rate"] = _round_or_none(metrics.get("resolved_dialog_rate"), 4)
+    row["overall_weighted_score"] = _round_or_none(metrics.get("overall_weighted_score"), 4)
     return row
 
-def _round_or_none(x, nd=4):
-    if x is None:
-        return None
-    try:
-        return round(float(x), nd)
-    except Exception:
-        return None
+def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.DataFrame:
+    """Build a pandas DataFrame summarizing multiple results JSONs."""
+    rows: List[Dict[str, Any]] = []
+    for p in paths:
+        try:
+            rows.append(_row_from_file(p, threshold=threshold))
+        except Exception as e:
+            print(f"[warn] Failed on {p}: {e}", file=sys.stderr)
 
-def _to_markdown(rows: List[Dict[str, Any]]) -> str:
     if not rows:
-        return ""
-    cols = list(rows[0].keys())
-    # header
-    md = ["|" + "|".join(cols) + "|", "|" + "|".join(["---"] * len(cols)) + "|"]
-    # rows
-    for r in rows:
-        md.append("|" + "|".join("" if r[c] is None else str(r[c]) for c in cols) + "|")
-    return "\n".join(md)
+        raise RuntimeError("No rows produced. Check input files/schema.")
+
+    # Stable column order
+    cols = [
+        "run_file","model","steering_used","feature","strength","compute_max_per_turn","max_act","sae_id",
+        "mode","seed","dataset","n_examples",
+        "resolved_proxy_rate","avg_num_questions","necessity_precision","necessity_recall",
+        "resolved_dialog_rate","overall_weighted_score"
+    ]
+    df = pd.DataFrame(rows)
+    # ensure column order even if some fields are missing in a row
+    df = df.reindex(columns=cols)
+    return df
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("results", nargs="+", help="Paths to results JSON files")
+    ap.add_argument("results", nargs="+", help="Paths to wrapped results JSON files ({run_info, examples})")
     ap.add_argument("--threshold", type=float, default=0.75, help="Similarity threshold for proxy resolution")
-    ap.add_argument("--out_csv", default=None, help="Optional path to write a CSV table")
-    ap.add_argument("--print_markdown", action="store_true", help="Also print a Markdown table to stdout")
+    ap.add_argument("--out_csv", default=None, help="Optional path to write a CSV")
+    ap.add_argument("--print", action="store_true", help="Print DataFrame as a pretty table to stdout")
     args = ap.parse_args()
 
-    rows = []
-    for path in args.results:
-        try:
-            rows.append(_row_from_file(path, threshold=args.threshold))
-        except Exception as e:
-            print(f"[warn] Failed on {path}: {e}", file=sys.stderr)
+    df = compare_runs_to_dataframe(args.results, threshold=args.threshold)
 
-    if not rows:
-        print("No rows produced.", file=sys.stderr)
-        sys.exit(1)
-
-    # Write CSV if requested
     if args.out_csv:
-        import csv
         os.makedirs(os.path.dirname(args.out_csv) or ".", exist_ok=True)
-        with open(args.out_csv, "w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
-            w.writeheader()
-            for r in rows:
-                w.writerow(r)
-        print(f"[info] Wrote: {args.out_csv}")
+        df.to_csv(args.out_csv, index=False)
+        print(f"[info] wrote CSV -> {args.out_csv}")
 
-    # Print a compact table to screen
-    widths = {k: max(len(k), max(len("" if r[k] is None else str(r[k])) for r in rows)) for k in rows[0].keys()}
-    header = " | ".join(f"{k:<{widths[k]}}" for k in rows[0].keys())
-    sep = "-+-".join("-" * widths[k] for k in rows[0].keys())
-    print(header)
-    print(sep)
-    for r in rows:
-        print(" | ".join(f"{'' if r[k] is None else str(r[k]):<{widths[k]}}" for k in rows[0].keys()))
-
-    if args.print_markdown:
-        print("\n\n# Markdown table\n")
-        print(_to_markdown(rows))
-
+    # For terminals (non-notebook), print a readable table
+    if args.print or not sys.stdout.isatty():
+        # widen columns a bit for readability
+        with pd.option_context("display.max_columns", None, "display.width", 160):
+            print(df.to_string(index=False))
 
 if __name__ == "__main__":
     main()
