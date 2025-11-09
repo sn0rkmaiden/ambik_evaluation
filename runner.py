@@ -9,6 +9,37 @@ from utils.parsing import *
 from dotenv import load_dotenv
 load_dotenv()
 
+
+def summarize_model(m):
+        info = {"wrapper_class": type(m).__name__}
+        # common attributes across wrappers
+        if hasattr(m, "model_name"):
+            info["model_name"] = getattr(m, "model_name")
+        # try to expose HF id if available
+        try:
+            tok = getattr(m, "tokenizer", None)
+            if tok is not None and hasattr(tok, "name_or_path"):
+                info["hf_name_or_path"] = tok.name_or_path
+        except Exception:
+            pass
+        return info
+
+def steering_summary(m):
+    # works whether attrs exist or not
+    used = bool(getattr(m, "steering_feature", None) is not None)
+    cfg = None
+    if used:
+        sae = getattr(m, "sae", None)
+        cfg = {
+            "feature": int(getattr(m, "steering_feature")),
+            "strength": float(getattr(m, "steering_strength", 1.0)),
+            "max_act": (float(getattr(m, "max_act")) if getattr(m, "max_act", None) is not None else None),
+            "compute_max_per_turn": bool(getattr(m, "compute_max_per_turn", False)),
+            "sae_release": getattr(getattr(sae, "cfg", None), "release", None) if sae else None,
+            "sae_id": (getattr(getattr(getattr(sae, "cfg", None), "metadata", None), "hook_name", None) if sae else None),
+        }
+    return used, cfg
+
 def build_final_prompt(instruction: str, clarifying_questions: list[str], provider_reply: str | None) -> str:
     """
     Build the final prompt for the robot model to generate a plan of actions.
@@ -81,10 +112,6 @@ def get_model_questions2(model, instruction, max_q=3):
 def get_model_questions(model, instruction, max_q=3):
     instruction += "\nReturn **only** a valid JSON object without any extra text."
 
-    # print('------------INSTRUCTION--------------')
-    # print(instruction)
-    # print('------------INSTRUCTION--------------')
-
     out, _ = model.request(instruction, None, json_format=True)
 
     print('------------RAW OUTPUT--------------')
@@ -111,6 +138,9 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
     if num_examples is not None:
         df = df.sample(n=min(num_examples, len(df)), random_state=seed).reset_index(drop=True)
 
+    model_info = summarize_model(model) if model is not None else {"wrapper_class": None}
+    steering_used, steering_cfg = steering_summary(model) if model is not None else (False, None)
+
     results = []
     provider = ProviderAgent()
 
@@ -125,6 +155,11 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
         example['gold_question'] = row.get('question', '') if 'question' in row else ''
         example['gold_answer'] = row.get('answer', '') if 'answer' in row else ''
         example['gold_plan_for_clear'] = row.get('plan_for_clear_task', '') if 'plan_for_clear_task' in row else ''
+
+        example['model_used'] = model_info            
+        example['steering_used'] = steering_used      
+        if steering_used:
+            example['steering'] = steering_cfg        
 
         instruction = data2prompt(env, ambiguous)
 
