@@ -95,3 +95,37 @@ Example of output json:
     }
 ```
 
+## What statistics are calculated?
+
+The function `eval_metrics.py` aggregates a run into a metrics dictionary with:
+
+- **total** — total number of examples.
+
+- **counts_per_category** — count of examples per `ambiguity_type`.
+
+- **per_category_similarity** — average of `model_question_best_similarity` **only on examples where the model asked ≥1 question**, reported per category (otherwise `null`).
+
+- **num_questions_hist** — histogram of how many clarifying questions the model asked (keys: 0, 1, 2, …).
+
+- **avg_num_questions** — mean number of questions per example (zeros included).
+
+- **necessity_precision** — precision of “asking only when needed”  
+  $$\text{TP} / (\text{TP} + \text{FP})$$,   
+  where $TP$ = examples in the `"preferences"` category where the model asked ≥1 question;  
+  $FP$ = examples **not** in `"preferences"` where the model asked ≥1 question.
+
+- **necessity_recall** — recall of “asking when needed”  
+  $$\text{TP} / (\text{TP} + \text{FN})$$,
+  where $FN$ = `"preferences"` examples where the model **did not** ask a question.
+
+- **resolved_proxy_rate** — fraction of examples marked `resolved_proxy = true`  
+  (best similarity ≥ a threshold like 0.75).
+
+- **resolved_dialog_rate** — among examples that have a dialog label (`dialog.resolved_dialog`), the fraction resolved successfully (`null` if none).
+
+- **overall_weighted_score** — a single summary score:              
+  $$0.5 \cdot \text{necessity} \textunderscore \text{score} ~ + ~ 0.4 \cdot \text{overall} \textunderscore \text{similarity} ~ + ~ 0.1 \cdot text{brevity} \textunderscore text{score} $$,      
+  where  
+  • **necessity_score** = $TP$ / (number of `"preferences"` examples) — effectively recall on that category;  
+  • **overall_similarity** — average `model_question_best_similarity` across **all examples where ≥1 question was asked**;  
+  • **brevity_score** — fraction of examples with questions ≤ `brevity_max` (default 1).
