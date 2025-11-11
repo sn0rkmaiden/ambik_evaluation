@@ -138,11 +138,16 @@ def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.D
         raise RuntimeError("No rows produced. Check input files/schema.")
 
     # Stable column order
+    # cols = [
+    #     "run_file","model","steering_used","feature","strength","compute_max_per_turn","max_act","sae_id",
+    #     "mode","seed","dataset","n_examples",
+    #     "resolved_proxy_rate","avg_num_questions","necessity_precision","necessity_recall",
+    #     "resolved_dialog_rate","overall_weighted_score"
+    # ]
     cols = [
-        "run_file","model","steering_used","feature","strength","compute_max_per_turn","max_act","sae_id",
-        "mode","seed","dataset","n_examples",
-        "resolved_proxy_rate","avg_num_questions","necessity_precision","necessity_recall",
-        "resolved_dialog_rate","overall_weighted_score"
+         "run_file", "model", "dataset", "sae_id", "mode", "seed", "compute_max_per_turn", "steering_used", "n_examples",
+           "feature", "strength",  "max_act", "resolved_proxy_rate", "avg_num_questions", "necessity_precision", "necessity_recall", 
+           "resolved_dialog_rate", "overall_weighted_score"
     ]
     df = pd.DataFrame(rows)
     # ensure column order even if some fields are missing in a row
