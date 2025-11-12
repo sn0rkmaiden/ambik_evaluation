@@ -114,6 +114,7 @@ def _row_from_file(path: str, threshold: float) -> Dict[str, Any]:
     row["seed"] = seed
     row["compute_max_per_turn"] = steer_per_turn
     row["n_examples"] = num_examples
+    row["threshold"] = threshold
     row["feature"] = steer_feature
     row["max_act"] = steer_max_act 
     row["strength"] = steer_strength
@@ -145,7 +146,7 @@ def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.D
     #     "resolved_dialog_rate","overall_weighted_score"
     # ]
     cols = [
-         "run_file", "model", "dataset", "sae_id", "mode", "seed", "compute_max_per_turn", "steering_used", "n_examples",
+         "run_file", "model", "dataset", "sae_id", "mode", "seed", "compute_max_per_turn", "steering_used", "n_examples", "threshold",
            "feature", "strength",  "max_act", "resolved_proxy_rate", "avg_num_questions", "necessity_precision", "necessity_recall", 
            "resolved_dialog_rate", "overall_weighted_score"
     ]
