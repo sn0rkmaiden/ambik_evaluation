@@ -213,7 +213,7 @@ class HookedGEMMA(LLM):
                 self.device = "cpu"
 
         # load components if not injected
-        self.model = model or HookedTransformer.from_pretrained(model_name, device=self.device)
+        self.model = model or HookedTransformer.from_pretrained(model_name, device=self.device, dtype=torch.float16)
         self.sae = sae or SAE.from_pretrained(release=sae_release, sae_id=sae_id, device=self.device)
 
         # steering config
