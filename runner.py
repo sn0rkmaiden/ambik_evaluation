@@ -9,20 +9,26 @@ from utils.parsing import *
 from dotenv import load_dotenv
 load_dotenv()
 
-
 def summarize_model(m):
-        info = {"wrapper_class": type(m).__name__}
-        # common attributes across wrappers
-        if hasattr(m, "model_name"):
-            info["model_name"] = getattr(m, "model_name")
-        # try to expose HF id if available
-        try:
-            tok = getattr(m, "tokenizer", None)
-            if tok is not None and hasattr(tok, "name_or_path"):
-                info["hf_name_or_path"] = tok.name_or_path
-        except Exception:
-            pass
-        return info
+    info = {"wrapper_class": type(m).__name__}
+    # common attributes across wrappers
+    if hasattr(m, "model_name"):
+        info["model_name"] = getattr(m, "model_name")
+    if hasattr(m, "sae"):
+        sae = getattr(m, "sae")
+        info["sae_present"] = sae is not None
+    if hasattr(m, "max_new_tokens"):
+        info["max_new_tokens"] = getattr(m, "max_new_tokens")
+    if hasattr(m, "cache_path"):
+        info["cache_path"] = getattr(m, "cache_path")
+    if hasattr(m, "device"):
+        info["device"] = str(getattr(m, "device"))
+    if hasattr(m, "steering_feature"):
+        info["steering_feature"] = getattr(m, "steering_feature")
+    if hasattr(m, "steering_strength"):
+        info["steering_strength"] = getattr(m, "steering_strength")
+    return info
+
 
 def steering_summary(m):
     # works whether attrs exist or not
@@ -33,12 +39,70 @@ def steering_summary(m):
         cfg = {
             "feature": int(getattr(m, "steering_feature")),
             "strength": float(getattr(m, "steering_strength", 1.0)),
-            "max_act": (float(getattr(m, "max_act")) if getattr(m, "max_act", None) is not None else None),
-            "compute_max_per_turn": bool(getattr(m, "compute_max_per_turn", False)),
-            "sae_release": getattr(getattr(sae, "cfg", None), "release", None) if sae else None,
-            "sae_id": (getattr(getattr(getattr(sae, "cfg", None), "metadata", None), "hook_name", None) if sae else None),
+            "max_act": (
+                float(getattr(m, "max_act"))
+                if getattr(m, "max_act", None) is not None
+                else None
+            ),
+            "compute_max_per_turn": bool(
+                getattr(m, "compute_max_per_turn", False)
+            ),
+            "sae_release": getattr(getattr(sae, "cfg", None), "release", None)
+            if sae
+            else None,
+            "sae_id": (
+                getattr(
+                    getattr(getattr(sae, "cfg", None), "metadata", None),
+                    "hook_name",
+                    None,
+                )
+                if sae
+                else None
+            ),
         }
     return used, cfg
+
+
+def parse_steering_features(args) -> list[int]:
+    """
+    Parse steering features from CLI args.
+
+    Priority:
+    1) --steering_features (file or comma/space-separated list)
+    2) --steering_feature (single int)
+
+    Returns a *unique, sorted* list of ints (may be empty).
+    """
+    feats: list[int] = []
+
+    raw = getattr(args, "steering_features", None)
+    if raw:
+        raw = raw.strip()
+        if os.path.exists(raw):
+            if raw.endswith(".json"):
+                with open(raw, "r") as f:
+                    data = json.load(f)
+                if isinstance(data, dict):
+                    feats = [int(k) for k in data.keys()]
+                elif isinstance(data, list):
+                    feats = [int(x) for x in data]
+                else:
+                    raise ValueError(
+                        f"Unsupported JSON structure in {raw} for steering features"
+                    )
+            else:                
+                with open(raw, "r") as f:
+                    txt = f.read()
+                feats = [int(m.group()) for m in re.finditer(r"-?\d+", txt)]
+        else:
+            tokens = re.split(r"[,\s]+", raw)
+            feats = [int(t) for t in tokens if t]
+
+    elif args.steering_feature is not None:
+        feats = [int(args.steering_feature)]
+
+    feats = sorted(set(feats))
+    return feats
 
 def build_final_prompt(instruction: str, clarifying_questions: list[str], provider_reply: str | None) -> str:
     """
@@ -131,7 +195,12 @@ def get_model_questions(model, instruction, max_q=3):
     return obj
 
 
-def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eval_output.json', num_examples=None, seed=0, mode='proxy', model=None):
+def run_eval(dataset_csv='data/ambik_calib_100.csv', 
+             out_json='results/ambik_eval_output.json', 
+             num_examples=None, 
+             seed=0, 
+             mode='proxy', 
+             model=None):
 
     print(">>> Reading data")
     df = pd.read_csv(dataset_csv)
@@ -211,7 +280,7 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
                 "num_examples": num_examples,
                 "model": model_info,
                 "steering_used": steering_used,
-                "steering": steering_cfg,
+                "steering_cfg": steering_cfg,
             },
             "examples": results
         }
@@ -222,7 +291,7 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv', out_json='results/ambik_eva
     print(f"Saved results to {out_json} ({len(results)} examples)")
     return out_json
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', required=True)
     parser.add_argument('--num_examples', type=int, default=None)
@@ -234,6 +303,9 @@ if __name__ == "__main__":
                         help='Enable SAE steering for Gemma (HookedTransformer path)')
     parser.add_argument('--steering_feature', type=int, default=None,
                         help='SAE feature index to steer (int)')
+    parser.add_argument('--steering_features', type=str, default=None,
+                    help='Either comma/space-separated feature ids '
+                            'or a path to a file (txt/json) containing feature ids.')
     parser.add_argument('--steering_strength', type=float, default=1.0,
                         help='Steering strength multiplier')
     parser.add_argument('--sae_release', type=str, default='gemma-2b-it-res-jb',
@@ -249,21 +321,81 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(">>> Loading LLM")
     model_name = args.model_name.strip()
+    feature_list = parse_steering_features(args)
 
-    # --- Model selection ---
+    # --- IO paths ---
+    if args.dataset_csv is None:
+        dataset_path = "data/ambik_calib_100.csv"
+    else:
+        dataset_path = args.dataset_csv
+
+    if args.out_json is None:
+        base_output_file = "results/ambik_eval_output.json"
+    else:
+        base_output_file = args.out_json
+
+     # --- Multi-feature steering mode ---
+    if len(feature_list) > 1:
+        if 'gemma' not in model_name.lower():
+            raise ValueError(
+                "Multiple steering features are only supported for Gemma models. "
+                "Got model_name={model_name!r}."
+            )
+
+        print(f">>> Multi-feature steering mode with features: {feature_list}")
+
+        root, ext = os.path.splitext(base_output_file)
+        if not ext:
+            ext = ".json"
+
+        for fid in feature_list:
+            out_json = f"{root}_feat{fid}{ext}"
+            cache_path = f"log/gemma_cache_feat{fid}.pkl"
+
+            print(f"\n>>> Loading HookedGEMMA for feature {fid}")
+            model = HookedGEMMA(
+                model_name=args.gemma_model,
+                sae_release=args.sae_release,
+                sae_id=args.sae_id,
+                cache=cache_path,
+                max_new_tokens=100,
+                steering_feature=fid,
+                steering_strength=args.steering_strength,
+                max_act=(args.max_act if args.max_act is not None else None),
+                compute_max_per_turn=args.compute_max_per_turn,
+            )
+
+            print(f">>> Running evaluation for feature {fid}, saving to {out_json}")
+            run_eval(
+                dataset_path,
+                out_json,
+                num_examples=args.num_examples,
+                seed=args.seed,
+                mode=args.mode,
+                model=model,
+            )
+
+        return
+    
+    # Single-feature or no-steering mode
+    
+    print(">>> Loading LLM")
+
+    use_steering_flag = args.use_steering or (len(feature_list) == 1)
+
     if model_name.lower() == "qwen":
         model = CustomLLM(model_name, cache=f'log/{model_name}_cache.pkl')
 
-    elif 'gemma' in model_name.lower() and (args.use_steering or args.steering_feature is not None):
+    elif 'gemma' in model_name.lower() and use_steering_flag:
+        steering_feature = feature_list[0] if feature_list else args.steering_feature
         model = HookedGEMMA(
             model_name=args.gemma_model,
             sae_release=args.sae_release,
             sae_id=args.sae_id,
             cache="log/gemma_cache.pkl",
             max_new_tokens=100,
-            steering_feature=args.steering_feature,
+            steering_feature=steering_feature,
             steering_strength=args.steering_strength,
             max_act=(args.max_act if args.max_act is not None else None),
             compute_max_per_turn=args.compute_max_per_turn,
@@ -275,18 +407,9 @@ if __name__ == "__main__":
     else:
         raise ValueError(f"Unknown model name: {model_name}")
 
-    # --- IO paths ---
-    if args.dataset_csv is None:
-        dataset_path = "data/ambik_calib_100.csv"
-    else:
-        dataset_path = args.dataset_csv
+    # Single run output
+    output_file = base_output_file
 
-    if args.out_json is None:
-        output_file = "results/ambik_eval_output.json"
-    else:
-        output_file = args.out_json
-
-    # --- Run evaluation ---
     run_eval(
         dataset_path,
         output_file,
@@ -295,3 +418,9 @@ if __name__ == "__main__":
         mode=args.mode,
         model=model,
     )
+
+    return
+
+
+if __name__ == "__main__":
+    main()
