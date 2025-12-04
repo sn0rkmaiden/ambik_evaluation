@@ -40,19 +40,34 @@ Usage examples:
     ```
 3. Loading model via custom class (with steering)
     ```python
-    !python runner.py \
-    --model_name gemma-steered \
-    --use_steering \
-    --num_examples 10 \
-    --steering_feature 1909 \
-    --steering_strength 2 \
-    --max_act 4 \
-    --compute_max_per_turn \
-    --mode proxy  \
-    --dataset_csv data/ambik_calib_100.csv \
-    --out_json results/ambik_eval_steered.json \
-    --seed 123
+    python runner.py \
+      --model_name gemma \
+      --use_steering \
+      --steering_feature 1234 \
+      --num_examples 10 \
+      --steering_strength 6.0 \
+      --sae_release gemma-scope-9b-it-res-canonical \
+      --sae_id layer_20/width_16k/canonical \
+      --gemma_model gemma-2-9b-it \
+      --dataset_csv data/ambik_calib_100.csv \
+      --out_json results/feat1234.json
+      --seed 123
     ```
+4. Multi-feature steering
+Run evaluation once per feature automatically.
+    ```python
+    python runner.py \
+      --model_name gemma \
+      --use_steering \
+      --steering_features "123, 456, 789" \
+    # or pass a file containing feature IDs --steering_features top_features.txt \
+      --sae_release gemma-scope-9b-it-res-canonical \
+      --sae_id layer_20/width_16k/canonical \
+      --gemma_model gemma-2-9b-it \
+      --dataset_csv data/ambik_calib_100.csv \
+      --out_json results/multi.json
+    ```
+    
 Results are saved to `results/` folder. 
 
 > [!NOTE]  
@@ -129,3 +144,4 @@ The function `eval_metrics.py` aggregates a run into a metrics dictionary with:
   • **necessity_score** = $TP$ / (number of `"preferences"` examples) — effectively recall on that category;  
   • **overall_similarity** — average `model_question_best_similarity` across **all examples where ≥1 question was asked**;  
   • **brevity_score** — fraction of examples with questions ≤ `brevity_max` (default 1).
+
