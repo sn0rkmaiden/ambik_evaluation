@@ -1,4 +1,4 @@
-import argparse, json, os, re
+import argparse, json, os, re, torch, gc
 import pandas as pd
 from llm import CustomLLM, HuggingFaceLLM, HookedGEMMA
 from provider import ProviderAgent
@@ -375,6 +375,10 @@ def main():
                 mode=args.mode,
                 model=model,
             )
+
+            del model
+            gc.collect()
+            torch.cuda.empty_cache()
 
         return
     
