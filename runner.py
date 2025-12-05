@@ -393,6 +393,8 @@ def main():
         root, ext = os.path.splitext(base_output_file)
         output_file = f"{root}_feat{steering_feature}{ext}"
 
+        print(f">>> Running evaluation for feature {steering_feature}, saving to {output_file}")
+
         model = HookedGEMMA(
             model_name=args.gemma_model,
             sae_release=args.sae_release,

@@ -158,7 +158,7 @@ def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.D
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("results", nargs="+", help="Paths to wrapped results JSON files ({run_info, examples})")
+    ap.add_argument("--results", nargs="+", required=True, help="List of results JSON files")
     ap.add_argument("--threshold", type=float, default=0.75, help="Similarity threshold for proxy resolution")
     ap.add_argument("--out_csv", default=None, help="Optional path to write a CSV")
     ap.add_argument("--print", action="store_true", help="Print DataFrame as a pretty table to stdout")
