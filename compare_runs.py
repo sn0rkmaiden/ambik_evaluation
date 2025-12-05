@@ -72,7 +72,11 @@ def _model_and_steer_from_runinfo(run_info: Optional[Dict[str, Any]]) -> Tuple[s
         m = run_info.get("model") or {}
         model_name = m.get("model_name") or m.get("wrapper_class") or "unknown"
         steering_used = bool(run_info.get("steering_used", False))
-        steering_cfg = run_info.get("steering") or {}
+        steering_cfg = (
+            run_info.get("steering")      # old key, if you ever used it
+            or run_info.get("steering_cfg")
+            or {}
+        )
     return model_name, steering_used, steering_cfg
 
 def _round_or_none(x, nd=4):
