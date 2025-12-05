@@ -389,6 +389,10 @@ def main():
 
     elif 'gemma' in model_name.lower() and use_steering_flag:
         steering_feature = feature_list[0] if feature_list else args.steering_feature
+
+        root, ext = os.path.splitext(base_output_file)
+        output_file = f"{root}_feat{steering_feature}{ext}"
+
         model = HookedGEMMA(
             model_name=args.gemma_model,
             sae_release=args.sae_release,
@@ -408,7 +412,8 @@ def main():
         raise ValueError(f"Unknown model name: {model_name}")
 
     # Single run output
-    output_file = base_output_file
+    if not output_file:
+        output_file = base_output_file
 
     run_eval(
         dataset_path,
