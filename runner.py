@@ -350,7 +350,7 @@ def main():
             ext = ".json"
 
         for fid in feature_list:
-            out_json = f"{root}_feat{fid}{ext}"
+            out_json = f"{root}_feat{fid}_str{args.steering_strength}{ext}"
             cache_path = f"log/gemma_cache_feat{fid}.pkl"
 
             print(f"\n>>> Loading HookedGEMMA for feature {fid}")
