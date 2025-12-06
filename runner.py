@@ -380,6 +380,9 @@ def main():
             gc.collect()
             torch.cuda.empty_cache()
 
+            if os.path.exists(cache_path):
+                os.remove(cache_path)
+
         return
     
     # Single-feature or no-steering mode
