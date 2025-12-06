@@ -162,13 +162,70 @@ def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.D
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--results", nargs="+", required=True, help="List of results JSON files")
-    ap.add_argument("--threshold", type=float, default=0.75, help="Similarity threshold for proxy resolution")
-    ap.add_argument("--out_csv", default=None, help="Optional path to write a CSV")
-    ap.add_argument("--print", action="store_true", help="Print DataFrame as a pretty table to stdout")
+    ap.add_argument(
+        "--results",
+        nargs="*",
+        default=[],
+        help="List of results JSON files (can be combined with --results_file)",
+    )
+    ap.add_argument(
+        "--results_file",
+        type=str,
+        default=None,
+        help="Optional text file with one path per line; only lines ending in .json are used",
+    )
+    ap.add_argument(
+        "--threshold",
+        type=float,
+        default=0.75,
+        help="Similarity threshold for proxy resolution",
+    )
+    ap.add_argument(
+        "--out_csv",
+        default=None,
+        help="Optional path to write a CSV",
+    )
+    ap.add_argument(
+        "--print",
+        action="store_true",
+        help="Print DataFrame as a pretty table to stdout",
+    )
     args = ap.parse_args()
 
-    df = compare_runs_to_dataframe(args.results, threshold=args.threshold)
+    # Collect paths from CLI and optional file
+    all_paths: List[str] = []
+
+    # 1) Directly passed JSON files
+    if args.results:
+        all_paths.extend(args.results)
+
+    # 2) From a text file (only *.json lines)
+    if args.results_file:
+        if not os.path.exists(args.results_file):
+            print(f"[error] results_file not found: {args.results_file}", file=sys.stderr)
+            sys.exit(1)
+        with open(args.results_file, "r", encoding="utf-8") as f:
+            for line in f:
+                raw = line.strip()
+                if not raw or raw.startswith("#"):
+                    continue  # skip empty/comment lines
+                if raw.endswith(".json"):
+                    all_paths.append(raw)
+                else:
+                    # Explicitly ignore non-json lines
+                    print(
+                        f"[warn] Skipping non-JSON entry from results_file: {raw}",
+                        file=sys.stderr,
+                    )
+
+    if not all_paths:
+        print(
+            "[error] No result files provided. Use --results and/or --results_file.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    df = compare_runs_to_dataframe(all_paths, threshold=args.threshold)
 
     if args.out_csv:
         os.makedirs(os.path.dirname(args.out_csv) or ".", exist_ok=True)
@@ -177,9 +234,10 @@ def main():
 
     # For terminals (non-notebook), print a readable table
     if args.print or not sys.stdout.isatty():
-        # widen columns a bit for readability
         with pd.option_context("display.max_columns", None, "display.width", 160):
             print(df.to_string(index=False))
 
+
 if __name__ == "__main__":
     main()
+
