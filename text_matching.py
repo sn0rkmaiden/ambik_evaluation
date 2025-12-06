@@ -1,5 +1,6 @@
 
 import re
+import sys
 from typing import Tuple
 try:
     from sentence_transformers import SentenceTransformer
@@ -7,6 +8,8 @@ try:
     from numpy.linalg import norm
     EMBED_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
 except Exception:
+    print(f"[WARN] Failed to load SentenceTransformer: {e}", file=sys.stderr)
+    print("[WARN] EMBED_MODEL is None — semantic similarity will always be 0.0", file=sys.stderr)
     EMBED_MODEL = None
     np = None
 
