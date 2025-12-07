@@ -285,9 +285,14 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv',
             "examples": results
         }
     
-    os.makedirs("results", exist_ok=True)
+    # Create parent directory of out_json if needed
+    out_dir = os.path.dirname(out_json)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+
     with open(out_json, 'w', encoding='utf-8') as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
+    
     print(f"Saved results to {out_json} ({len(results)} examples)")
     return out_json
 
