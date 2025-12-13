@@ -3,7 +3,7 @@ import json
 import os
 from typing import List
 
-from eval_metrics import compute_metrics_from_json
+from ..eval_metrics import compute_metrics_from_json
 
 """"
 
