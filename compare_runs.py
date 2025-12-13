@@ -21,10 +21,11 @@ def coerce_dtypes(df: pd.DataFrame) -> pd.DataFrame:
 
     # floats (keep NaN for undefined metrics)
     for c in [
-        "strength","max_act",
-        "resolved_proxy_rate","avg_num_questions",
-        "necessity_precision","necessity_recall",
-        "resolved_dialog_rate","overall_weighted_score",
+        "strength", "max_act",
+        "resolved_proxy_rate", "avg_num_questions",
+        "necessity_precision", "necessity_recall",
+        "resolved_dialog_rate", "overall_weighted_score",
+        "nli_resolved_rate", "nli_overall_similarity", "overall_weighted_score_nli",
     ]:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
@@ -87,12 +88,12 @@ def _round_or_none(x, nd=4):
     except Exception:
         return None
 
-def _row_from_file(path: str, threshold: float) -> Dict[str, Any]:
+def _row_from_file(path: str, threshold: float, nli_threshold: float | None) -> Dict[str, Any]:
     obj = _load_json(path)
     examples, run_info = _extract_examples_and_meta(obj, path)
 
     # compute metrics fresh
-    metrics = compute_metrics_from_json(path, embed_threshold=threshold)
+    metrics = compute_metrics_from_json(path, embed_threshold=threshold, nli_threshold=nli_threshold)
 
     model_name, steering_used, steering_cfg = _model_and_steer_from_runinfo(run_info)
     num_examples = (run_info or {}).get("num_examples") or len(examples)
@@ -119,6 +120,7 @@ def _row_from_file(path: str, threshold: float) -> Dict[str, Any]:
     row["compute_max_per_turn"] = steer_per_turn
     row["n_examples"] = num_examples
     row["threshold"] = threshold
+    row["nli_threshold"] = nli_threshold
     row["feature"] = steer_feature
     row["max_act"] = steer_max_act 
     row["strength"] = steer_strength
@@ -128,31 +130,27 @@ def _row_from_file(path: str, threshold: float) -> Dict[str, Any]:
     row["necessity_recall"] = _round_or_none(metrics.get("necessity_recall"), 4)
     row["resolved_dialog_rate"] = _round_or_none(metrics.get("resolved_dialog_rate"), 4)
     row["overall_weighted_score"] = _round_or_none(metrics.get("overall_weighted_score"), 4)
+    row["nli_resolved_rate"] = _round_or_none(metrics.get("resolved_proxy_rate_nli"), 4)
+    row["nli_overall_similarity"] = _round_or_none(metrics.get("overall_similarity_nli"), 4)
+    row["overall_weighted_score_nli"] = _round_or_none(metrics.get("overall_weighted_score_nli"), 4)
     return row
 
-def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75) -> pd.DataFrame:
+def compare_runs_to_dataframe(paths: List[str], threshold: float = 0.75, nli_threshold: float | None = None) -> pd.DataFrame:
     """Build a pandas DataFrame summarizing multiple results JSONs."""
     rows: List[Dict[str, Any]] = []
     for p in paths:
         try:
-            rows.append(_row_from_file(p, threshold=threshold))
+            rows.append(_row_from_file(p, threshold=threshold, nli_threshold=nli_threshold))
         except Exception as e:
             print(f"[warn] Failed on {p}: {e}", file=sys.stderr)
 
     if not rows:
         raise RuntimeError("No rows produced. Check input files/schema.")
 
-    # Stable column order
-    # cols = [
-    #     "run_file","model","steering_used","feature","strength","compute_max_per_turn","max_act","sae_id",
-    #     "mode","seed","dataset","n_examples",
-    #     "resolved_proxy_rate","avg_num_questions","necessity_precision","necessity_recall",
-    #     "resolved_dialog_rate","overall_weighted_score"
-    # ]
     cols = [
-         "run_file", "model", "dataset", "sae_id", "mode", "seed", "compute_max_per_turn", "steering_used", "n_examples", "threshold",
-           "feature", "strength",  "max_act", "resolved_proxy_rate", "avg_num_questions", "necessity_precision", "necessity_recall", 
-           "resolved_dialog_rate", "overall_weighted_score"
+         "run_file", "model", "dataset", "sae_id", "mode", "seed", "compute_max_per_turn", "steering_used", "n_examples", "threshold", "nli_threshold",
+           "feature", "strength",  "max_act", "resolved_proxy_rate", "nli_resolved_rate", "avg_num_questions", "necessity_precision", "necessity_recall", 
+           "resolved_dialog_rate", "overall_weighted_score", "overall_weighted_score_nli", "nli_overall_similarity",   
     ]
     df = pd.DataFrame(rows)
     # ensure column order even if some fields are missing in a row
@@ -190,6 +188,13 @@ def main():
         action="store_true",
         help="Print DataFrame as a pretty table to stdout",
     )
+    ap.add_argument(
+        "--nli_threshold",
+        type=float,
+        default=None,
+        help="Threshold for NLI-based resolution (defaults to --threshold)."
+    )
+
     args = ap.parse_args()
 
     # Collect paths from CLI and optional file
@@ -225,7 +230,7 @@ def main():
         )
         sys.exit(1)
 
-    df = compare_runs_to_dataframe(all_paths, threshold=args.threshold)
+    df = compare_runs_to_dataframe(all_paths, threshold=args.threshold, nli_threshold=args.nli_threshold)
 
     if args.out_csv:
         os.makedirs(os.path.dirname(args.out_csv) or ".", exist_ok=True)
