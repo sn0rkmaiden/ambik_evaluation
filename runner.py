@@ -2,7 +2,7 @@ import argparse, json, os, re, torch, gc
 import pandas as pd
 from llm import CustomLLM, HuggingFaceLLM, HookedGEMMA
 from provider import ProviderAgent
-from text_matching import best_match_score, normalize_text
+from text_matching import best_match_score, normalize_text, nli_question_similarity
 import ast
 from utils.parsing import *
 
@@ -196,12 +196,17 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv',
              num_examples=None, 
              seed=0, 
              mode='proxy', 
-             model=None):
+             model=None,
+             threshold: float = 0.75, 
+             nli_threshold: float | None = None):
 
     print(">>> Reading data")
     df = pd.read_csv(dataset_csv)
     if num_examples is not None:
         df = df.sample(n=min(num_examples, len(df)), random_state=seed).reset_index(drop=True)
+
+    if nli_threshold is None:
+        nli_threshold = threshold
 
     model_info = summarize_model(model) if model is not None else {"wrapper_class": None}
     steering_used, steering_cfg = steering_summary(model) if model is not None else (False, None)
@@ -250,7 +255,16 @@ def run_eval(dataset_csv='data/ambik_calib_100.csv',
                 best_score = s
 
         example['model_question_best_similarity'] = best_score
-        example['resolved_proxy'] = best_score >= 0.75
+        example['resolved_proxy'] = best_score >= threshold
+
+        best_nli = 0.0
+        for q in model_questions:
+            s_nli = nli_question_similarity(q or "", example['gold_question'] or "")
+            if s_nli > best_nli:
+                best_nli = s_nli
+
+        example['model_question_best_nli_similarity'] = best_nli
+        example['resolved_nli'] = best_nli >= nli_threshold
 
         example['dialog'] = None
         if mode in ('dialog', 'both') and model_questions:
@@ -319,6 +333,11 @@ def main():
                         help='Estimate max activation from each prompt (no ActivationStore needed)')
     parser.add_argument('--gemma_model', type=str, default='gemma-2b-it',
                         help='HookedTransformer checkpoint name (e.g., gemma-2b-it)')
+    parser.add_argument('--threshold', type=float, default=0.75,
+                    help='Embedding similarity threshold for resolved_proxy.')
+    parser.add_argument('--nli_threshold', type=float, default=None,
+                    help='NLI threshold for resolved_nli (defaults to --threshold).')
+
 
     args = parser.parse_args()
 
@@ -375,6 +394,8 @@ def main():
                 seed=args.seed,
                 mode=args.mode,
                 model=model,
+                threshold=args.threshold,
+                nli_threshold=args.nli_threshold,
             )
 
             del model
@@ -432,6 +453,8 @@ def main():
         seed=args.seed,
         mode=args.mode,
         model=model,
+        threshold=args.threshold,
+        nli_threshold=args.nli_threshold,
     )
 
     return
