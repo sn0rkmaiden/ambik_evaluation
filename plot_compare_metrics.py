@@ -9,13 +9,15 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 
+# tqdm (optional)
 try:
-    from tqdm import tqdm  
-except Exception:  
-    def tqdm(x, **kwargs): 
+    from tqdm import tqdm
+except Exception:
+    def tqdm(x, **kwargs):
         return x
 
 
+# Paper-friendly text sizes
 mpl.rcParams.update({
     "font.size": 14,
     "axes.titlesize": 16,
@@ -26,15 +28,15 @@ mpl.rcParams.update({
 })
 
 
+# Metrics: first two are rates (left axis), last one is count (right axis)
 METRICS = [
-    ("Resolved (proxy)", ["resolved_proxy_rate"]),
-    ("Resolved (NLI)",   ["resolved_proxy_rate_nli", "nli_resolved_rate"]),
-    ("#Questions",       ["avg_num_questions"]),
+    ("Resolved (proxy)", ["resolved_proxy_rate"]),                          # left axis
+    ("Resolved (NLI)",   ["resolved_proxy_rate_nli", "nli_resolved_rate"]), # left axis
+    ("#Questions",       ["avg_num_questions"]),                            # right axis
 ]
 
 
 def iter_json_files(results_root: Path, include_regex: Optional[str] = None) -> List[Path]:
-    """Recursively collect .json files under results_root, optionally filtering by regex over full path."""
     files = sorted([p for p in results_root.rglob("*.json") if p.is_file()])
     if include_regex:
         rgx = re.compile(include_regex)
@@ -43,12 +45,10 @@ def iter_json_files(results_root: Path, include_regex: Optional[str] = None) -> 
 
 
 def is_baseline(path: Path, baseline_tag: str) -> bool:
-    """Baseline runs are identified by having baseline_tag in the filename."""
     return baseline_tag in path.name
 
 
 def load_metrics_from_json(path: Path) -> Optional[Dict]:
-    """If JSON has top-level {'metrics': {...}}, return it."""
     try:
         obj = json.loads(path.read_text(encoding="utf-8"))
     except Exception:
@@ -59,10 +59,6 @@ def load_metrics_from_json(path: Path) -> Optional[Dict]:
 
 
 def compute_metrics_if_possible(path: Path) -> Optional[Dict]:
-    """
-    Try to compute metrics using eval_metrics.compute_metrics_from_json.
-    May be slow if NLI is computed.
-    """
     try:
         from eval_metrics import compute_metrics_from_json  # type: ignore
     except Exception:
@@ -76,7 +72,6 @@ def compute_metrics_if_possible(path: Path) -> Optional[Dict]:
 
 
 def extract_metric_vector(m: Dict) -> Optional[List[float]]:
-    """Extract the required metrics in METRICS order. Return None if any are missing/non-numeric."""
     vals: List[float] = []
     for _, keys in METRICS:
         found = None
@@ -92,13 +87,6 @@ def extract_metric_vector(m: Dict) -> Optional[List[float]]:
 
 
 def summarize(arr: np.ndarray, err: str = "sem") -> Tuple[np.ndarray, np.ndarray]:
-    """
-    Compute mean and error for each metric over runs.
-    err:
-      - 'sem' = standard error of the mean
-      - 'std' = standard deviation
-      - 'none' = zeros
-    """
     mean = arr.mean(axis=0)
 
     if err == "none" or arr.shape[0] <= 1:
@@ -113,7 +101,6 @@ def summarize(arr: np.ndarray, err: str = "sem") -> Tuple[np.ndarray, np.ndarray
 
 
 def infer_title(results_root: Path) -> str:
-    """Best-effort title from common path conventions (optional)."""
     s = str(results_root)
 
     vocab = None
@@ -122,7 +109,6 @@ def infer_title(results_root: Path) -> str:
             vocab = v
             break
 
-    # Try to infer 2b/9b from a few filenames
     model = None
     for p in list(results_root.rglob("*.json"))[:80]:
         m = re.search(r"_([29]b)_", p.name)
@@ -142,19 +128,11 @@ def collect_condition_vectors(
     json_paths: List[Path],
     desc: str,
 ) -> Tuple[np.ndarray, int, int, int]:
-    """
-    Process a list of JSON files and return:
-      - arr: (n_used, n_metrics)
-      - n_total: total files provided
-      - n_used: used (had metrics)
-      - n_skipped: skipped
-    """
     vectors: List[List[float]] = []
     n_total = len(json_paths)
     n_skipped = 0
 
     for p in tqdm(json_paths, desc=desc, unit="file"):
-        # Prefer metrics stored in JSON; fall back to computing.
         m = load_metrics_from_json(p)
         if m is None:
             m = compute_metrics_if_possible(p)
@@ -182,7 +160,7 @@ def collect_condition_vectors(
     return arr, n_total, arr.shape[0], n_skipped
 
 
-def plot_grouped(
+def plot_grouped_two_axes(
     base_mean: np.ndarray,
     base_err: np.ndarray,
     steer_mean: np.ndarray,
@@ -195,21 +173,71 @@ def plot_grouped(
     x = np.arange(len(labels))
     width = 0.36
 
-    plt.figure(figsize=(10, 5))
-    plt.bar(x - width / 2, base_mean, width, yerr=base_err, capsize=4, label="baseline")
-    plt.bar(x + width / 2, steer_mean, width, yerr=steer_err, capsize=4, label="steering")
+    # left axis for rate metrics (0,1), right axis for questions (2)
+    rate_idx = [0, 1]
+    q_idx = [2]
 
-    plt.xticks(x, labels)
-    plt.ylabel("Value")
-    plt.title(title)
-    plt.grid(True, axis="y", alpha=0.3)
-    plt.legend(title=f"error={error_label}")
-    plt.tight_layout()
+    fig, ax_left = plt.subplots(figsize=(10, 5))
+    ax_right = ax_left.twinx()
+
+    # --- left axis bars (rates) ---
+    bl_left = ax_left.bar(
+        x[rate_idx] - width / 2,
+        base_mean[rate_idx],
+        width,
+        yerr=base_err[rate_idx],
+        capsize=4,
+        label="baseline (rates)"
+    )
+    st_left = ax_left.bar(
+        x[rate_idx] + width / 2,
+        steer_mean[rate_idx],
+        width,
+        yerr=steer_err[rate_idx],
+        capsize=4,
+        label="steering (rates)"
+    )
+
+    ax_left.set_ylabel("Resolution rate")
+    ax_left.set_ylim(0.0, 1.05)
+    ax_left.grid(True, axis="y", alpha=0.3)
+
+    # --- right axis bars (avg # questions) ---
+    bl_right = ax_right.bar(
+        x[q_idx] - width / 2,
+        base_mean[q_idx],
+        width,
+        yerr=base_err[q_idx],
+        capsize=4,
+        label="baseline (#questions)"
+    )
+    st_right = ax_right.bar(
+        x[q_idx] + width / 2,
+        steer_mean[q_idx],
+        width,
+        yerr=steer_err[q_idx],
+        capsize=4,
+        label="steering (#questions)"
+    )
+
+    ax_right.set_ylabel("Average #questions")
+
+    # x labels / title
+    ax_left.set_xticks(x)
+    ax_left.set_xticklabels(labels)
+    ax_left.set_title(title)
+
+    # unified legend
+    handles = [bl_left, st_left, bl_right, st_right]
+    legend_labels = ["baseline", "steering", "baseline (#questions)", "steering (#questions)"]
+    ax_left.legend(handles, legend_labels, title=f"error={error_label}", loc="best")
+
+    fig.tight_layout()
 
     if out_path.lower().endswith(".pdf"):
-        plt.savefig(out_path, bbox_inches="tight")
+        fig.savefig(out_path, bbox_inches="tight")
     else:
-        plt.savefig(out_path, dpi=300, bbox_inches="tight")
+        fig.savefig(out_path, dpi=300, bbox_inches="tight")
 
     print(f"[ok] saved {out_path}")
 
@@ -223,7 +251,7 @@ def main():
     ap.add_argument("--include_regex", default=None,
                     help="Optional regex to restrict which JSONs are considered (matches full path)")
     ap.add_argument("--out", default="compare_metrics.pdf",
-                    help="Output path (.pdf recommended for Overleaf)")
+                    help="Output path")
     ap.add_argument("--title", default=None,
                     help="Optional title override (default: inferred from path)")
     ap.add_argument("--error", choices=["sem", "std", "none"], default="sem",
@@ -248,18 +276,14 @@ def main():
 
     print(f"[info] found {len(baseline_jsons)} baseline JSON(s), {len(steering_jsons)} steering JSON(s)")
 
-    base_arr, base_total, base_used, base_skipped = collect_condition_vectors(
-        baseline_jsons, desc="Baseline"
-    )
-    steer_arr, steer_total, steer_used, steer_skipped = collect_condition_vectors(
-        steering_jsons, desc="Steering"
-    )
+    base_arr, base_total, base_used, base_skipped = collect_condition_vectors(baseline_jsons, desc="Baseline")
+    steer_arr, steer_total, steer_used, steer_skipped = collect_condition_vectors(steering_jsons, desc="Steering")
 
     base_mean, base_err = summarize(base_arr, err=args.error)
     steer_mean, steer_err = summarize(steer_arr, err=args.error)
 
-    title = args.title if args.title is not None else f"Сравнение метрик · {infer_title(root)}"
-    plot_grouped(
+    title = args.title if args.title is not None else f"Metric comparison · {infer_title(root)}"
+    plot_grouped_two_axes(
         base_mean, base_err,
         steer_mean, steer_err,
         out_path=args.out,
