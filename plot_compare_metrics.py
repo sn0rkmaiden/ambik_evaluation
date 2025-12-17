@@ -180,22 +180,26 @@ def plot_grouped_two_axes(
     fig, ax_left = plt.subplots(figsize=(10, 5))
     ax_right = ax_left.twinx()
 
+    # Choose consistent colors across both axes
+    baseline_color = "tab:blue"
+    steering_color = "tab:orange"
+
     # --- left axis bars (rates) ---
-    bl_left = ax_left.bar(
+    ax_left.bar(
         x[rate_idx] - width / 2,
         base_mean[rate_idx],
         width,
         yerr=base_err[rate_idx],
         capsize=4,
-        label="baseline (rates)"
+        color=baseline_color,
     )
-    st_left = ax_left.bar(
+    ax_left.bar(
         x[rate_idx] + width / 2,
         steer_mean[rate_idx],
         width,
         yerr=steer_err[rate_idx],
         capsize=4,
-        label="steering (rates)"
+        color=steering_color,
     )
 
     ax_left.set_ylabel("Resolution rate")
@@ -203,21 +207,21 @@ def plot_grouped_two_axes(
     ax_left.grid(True, axis="y", alpha=0.3)
 
     # --- right axis bars (avg # questions) ---
-    bl_right = ax_right.bar(
+    ax_right.bar(
         x[q_idx] - width / 2,
         base_mean[q_idx],
         width,
         yerr=base_err[q_idx],
         capsize=4,
-        label="baseline (#questions)"
+        color=baseline_color,
     )
-    st_right = ax_right.bar(
+    ax_right.bar(
         x[q_idx] + width / 2,
         steer_mean[q_idx],
         width,
         yerr=steer_err[q_idx],
         capsize=4,
-        label="steering (#questions)"
+        color=steering_color,
     )
 
     ax_right.set_ylabel("Average #questions")
@@ -227,19 +231,28 @@ def plot_grouped_two_axes(
     ax_left.set_xticklabels(labels)
     ax_left.set_title(title)
 
-    # unified legend
-    handles = [bl_left, st_left, bl_right, st_right]
-    legend_labels = ["baseline", "steering", "baseline (#questions)", "steering (#questions)"]
-    ax_left.legend(handles, legend_labels, title=f"error={error_label}", loc="best")
+    from matplotlib.patches import Patch
+    legend_handles = [
+        Patch(facecolor=baseline_color, label="baseline"),
+        Patch(facecolor=steering_color, label="steering"),
+    ]
+    fig.legend(
+        handles=legend_handles,
+        loc="lower center",
+        ncol=2,
+        frameon=False,
+    )
 
-    fig.tight_layout()
+    fig.tight_layout(rect=[0, 0.08, 1, 1])
 
+    # Save
     if out_path.lower().endswith(".pdf"):
         fig.savefig(out_path, bbox_inches="tight")
     else:
         fig.savefig(out_path, dpi=300, bbox_inches="tight")
 
     print(f"[ok] saved {out_path}")
+
 
 
 def main():
