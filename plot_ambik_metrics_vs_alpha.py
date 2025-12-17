@@ -8,16 +8,6 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-"""
-Usage example:
-python plot_ambik_metrics_vs_alpha.py \
-  --results_root all_results \
-  --out images/ambik_metrics_vs_alpha.pdf \
-  --error sem \
-  --title "AmbiK · gemma-2-9b-it · metrics vs steering strength"
-
-"""
-
 mpl.rcParams.update({
     "font.size": 14,
     "axes.titlesize": 16,
@@ -34,11 +24,12 @@ except Exception:
         return x
 
 
-METRICS = [
-    ("resolved_proxy_rate", ["resolved_proxy_rate"]),
-    ("nli_resolved_rate",   ["resolved_proxy_rate_nli", "nli_resolved_rate"]),
-    ("avg_num_questions",   ["avg_num_questions"]),
+RATE_METRICS = [
+    ("Resolved (proxy)", ["resolved_proxy_rate"]),
+    ("Resolved (NLI)",   ["resolved_proxy_rate_nli", "nli_resolved_rate"]),
 ]
+
+COUNT_METRIC = ("Avg. #Questions", ["avg_num_questions"])
 
 
 def iter_json_files(root: Path, include_regex: Optional[str] = None) -> List[Path]:
@@ -61,7 +52,7 @@ def load_metrics_from_json(path: Path) -> Optional[Dict]:
 
 def compute_metrics_if_possible(path: Path) -> Optional[Dict]:
     try:
-        from eval_metrics import compute_metrics_from_json  # type: ignore
+        from eval_metrics import compute_metrics_from_json  
     except Exception:
         return None
     try:
@@ -72,18 +63,10 @@ def compute_metrics_if_possible(path: Path) -> Optional[Dict]:
 
 
 def parse_alpha_from_path(path: Path, baseline_tag: str = "featNone") -> Optional[float]:
-    """
-    Supports patterns like:
-      - str3.0 / str15 / str1
-      - alpha0.5 / alpha_0.5
-      - a0.5
-    Baseline (featNone) -> alpha=0.0
-    """
-    s = str(path)
-
     if baseline_tag and baseline_tag in path.name:
         return 0.0
 
+    s = str(path)
     patterns = [
         r"(?:^|[^a-zA-Z])str([0-9]+(?:\.[0-9]+)?)",
         r"(?:^|[^a-zA-Z])alpha[_-]?([0-9]+(?:\.[0-9]+)?)",
@@ -112,28 +95,29 @@ def mean_and_err(vals: List[float], err: str) -> Tuple[float, float]:
     std = float(arr.std(ddof=1))
     if err == "std":
         return mu, std
-    return mu, std / np.sqrt(arr.size)  # sem
+    return mu, std / np.sqrt(arr.size)  # SEM
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--results_root", required=True, help="Folder with AmbiK run JSONs")
-    ap.add_argument("--include_regex", default=None, help="Optional regex to restrict files (matches full path)")
-    ap.add_argument("--baseline_tag", default="featNone", help="Substring identifying baseline filenames")
+    ap.add_argument("--results_root", required=True)
+    ap.add_argument("--include_regex", default=None)
+    ap.add_argument("--baseline_tag", default="featNone")
     ap.add_argument("--error", choices=["sem", "std", "none"], default="sem")
     ap.add_argument("--out", default="ambik_metrics_vs_alpha.pdf")
-    ap.add_argument("--title", default=None)
+    ap.add_argument("--title", default="AmbiK: Metrics vs α")
     args = ap.parse_args()
 
     root = Path(args.results_root)
-    files = iter_json_files(root, include_regex=args.include_regex)
+    files = iter_json_files(root, args.include_regex)
     if not files:
-        raise SystemExit(f"No JSON files found under: {root}")
+        raise SystemExit(f"No JSON files found under {root}")
 
+    # by_alpha[alpha]["metric"] = [values]
     by_alpha: Dict[float, Dict[str, List[float]]] = {}
 
-    for p in tqdm(files, desc="Reading runs", unit="file"):
-        alpha = parse_alpha_from_path(p, baseline_tag=args.baseline_tag)
+    for p in tqdm(files, desc="Processing runs", unit="file"):
+        alpha = parse_alpha_from_path(p, args.baseline_tag)
         if alpha is None:
             continue
 
@@ -143,46 +127,69 @@ def main():
         if m is None:
             continue
 
-        for metric_label, keys in METRICS:
+        for label, keys in RATE_METRICS:
             v = get_metric_value(m, keys)
-            if v is None:
-                continue
-            by_alpha.setdefault(alpha, {}).setdefault(metric_label, []).append(v)
+            if v is not None:
+                by_alpha.setdefault(alpha, {}).setdefault(label, []).append(v)
+
+        label_q, keys_q = COUNT_METRIC
+        vq = get_metric_value(m, keys_q)
+        if vq is not None:
+            by_alpha.setdefault(alpha, {}).setdefault(label_q, []).append(vq)
 
     if not by_alpha:
-        raise SystemExit("No usable runs found. Check your folder and filename patterns for alpha/featNone.")
+        raise SystemExit("No usable runs found (alpha parsing or metrics missing).")
 
     alphas = sorted(by_alpha.keys())
 
-    series = {}
-    for metric_label, _ in METRICS:
-        means = []
-        errs = []
+    # Prepare data
+    rate_series = {}
+    for label, _ in RATE_METRICS:
+        means, errs = [], []
         for a in alphas:
-            vals = by_alpha.get(a, {}).get(metric_label, [])
-            if not vals:
-                means.append(np.nan)
-                errs.append(0.0)
-            else:
-                mu, er = mean_and_err(vals, args.error)
-                means.append(mu)
-                errs.append(er)
-        series[metric_label] = (np.array(means, dtype=float), np.array(errs, dtype=float))
+            vals = by_alpha.get(a, {}).get(label, [])
+            mu, er = mean_and_err(vals, args.error) if vals else (np.nan, 0.0)
+            means.append(mu)
+            errs.append(er)
+        rate_series[label] = (np.array(means), np.array(errs))
 
-    plt.figure(figsize=(10, 5))
-    for metric_label, (means, errs) in series.items():
-        plt.plot(alphas, means, marker="o", label=metric_label)
+    q_label, _ = COUNT_METRIC
+    q_means, q_errs = [], []
+    for a in alphas:
+        vals = by_alpha.get(a, {}).get(q_label, [])
+        mu, er = mean_and_err(vals, args.error) if vals else (np.nan, 0.0)
+        q_means.append(mu)
+        q_errs.append(er)
+
+    # ---------- Plot ----------
+    fig, ax_left = plt.subplots(figsize=(10, 5))
+    ax_right = ax_left.twinx()
+
+    # Left axis: rates
+    for label, (means, errs) in rate_series.items():
+        ax_left.plot(alphas, means, marker="o", label=label)
         if args.error != "none":
-            plt.errorbar(alphas, means, yerr=errs, fmt="none", capsize=4)
+            ax_left.errorbar(alphas, means, yerr=errs, fmt="none", capsize=4)
 
-    plt.xlabel("Steering strength")
-    plt.ylabel("Metric value")
-    if args.title is None:
-        plt.title("AmbiK: metrics vs steering strength")
-    else:
-        plt.title(args.title)
-    plt.grid(True, alpha=0.3)
-    plt.legend()
+    ax_left.set_ylabel("Resolution rate")
+    ax_left.set_ylim(0.0, 1.05)
+
+    # Right axis: question count
+    ax_right.plot(alphas, q_means, marker="s", linestyle="--", color="black", label=q_label)
+    if args.error != "none":
+        ax_right.errorbar(alphas, q_means, yerr=q_errs, fmt="none", capsize=4, color="black")
+
+    ax_right.set_ylabel("Average #questions")
+
+    ax_left.set_xlabel("steering strength")
+    ax_left.grid(True, alpha=0.3)
+
+    # Unified legend
+    lines_l, labels_l = ax_left.get_legend_handles_labels()
+    lines_r, labels_r = ax_right.get_legend_handles_labels()
+    ax_left.legend(lines_l + lines_r, labels_l + labels_r, loc="best")
+
+    plt.title(args.title)
     plt.tight_layout()
 
     if args.out.lower().endswith(".pdf"):
@@ -191,9 +198,9 @@ def main():
         plt.savefig(args.out, dpi=300, bbox_inches="tight")
 
     print(f"[ok] saved {args.out}")
-    print("[info] counts per alpha (per metric):")
+    print("[info] counts per alpha:")
     for a in alphas:
-        counts = {k: len(by_alpha.get(a, {}).get(k, [])) for k, _ in METRICS}
+        counts = {k: len(v) for k, v in by_alpha[a].items()}
         print(f"  alpha={a}: {counts}")
 
 
