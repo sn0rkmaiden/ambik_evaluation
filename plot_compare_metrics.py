@@ -29,11 +29,10 @@ mpl.rcParams.update({
 })
 
 
-# ---------- Metrics to plot ----------
 METRICS = [
-    ("Resolved (proxy)", "resolved_proxy_rate"),
-    ("Resolved (NLI)",   "nli_resolved_rate"),
-    ("#Questions",       "avg_num_questions"),
+    ("Resolved (proxy)", ["resolved_proxy_rate"]),
+    ("Resolved (NLI)",   ["resolved_proxy_rate_nli", "nli_resolved_rate"]),
+    ("#Questions",       ["avg_num_questions"]),
 ]
 
 
@@ -71,11 +70,15 @@ def compute_metrics_if_possible(path: Path) -> Optional[Dict]:
 
 def extract_metric_vector(m: Dict) -> Optional[List[float]]:
     vals = []
-    for _, key in METRICS:
-        v = m.get(key, None)
-        if not isinstance(v, (int, float)):
+    for _, keys in METRICS:
+        v = None
+        for k in keys:
+            if isinstance(m.get(k), (int, float)):
+                v = float(m[k])
+                break
+        if v is None:
             return None
-        vals.append(float(v))
+        vals.append(v)
     return vals
 
 
