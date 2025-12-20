@@ -1,0 +1,398 @@
+2025-12-08 08:14:17,407 - INFO - PyTorch version 2.6.0 available.
+2025-12-08 08:14:20,705 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-08 08:14:20,705 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 08:14:20,705 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-08 08:14:20,705 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 08:14:20,706 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-08 08:14:20,706 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-08 08:14:20,706 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 08:14:20,706 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-08 08:14:20,706 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-08 08:14:20,706 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 08:14:20,706 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-08 08:14:20,707 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-08 08:14:22,367 - INFO - Use pytorch device_name: cuda:0
+2025-12-08 08:14:22,367 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-08 08:14:22,369 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:14:22,599 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-08 08:14:22,628 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-08 08:14:22,779 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-08 08:14:22,808 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-08 08:14:22,961 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-08 08:14:22,991 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-08 08:14:23,144 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-08 08:14:23,173 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-08 08:14:23,329 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-08 08:14:23,359 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-08 08:14:23,514 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-08 08:14:23,543 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-08 08:14:23,697 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-08 08:14:23,851 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-08 08:14:23,903 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-08 08:14:24,089 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-08 08:14:24,118 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:14:24,284 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:14:24,473 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-08 08:14:24,525 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-08 08:14:24,683 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6949
+2025-12-08 08:14:26,410 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:14:26,572 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:14:30,481 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:14:30,642 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:14:31,218 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:14:31,386 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:14:35,327 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:14:45,700 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:15:30,200 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 08:20:53,924 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:20:53,949 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: f9737cd6-3df4-4dd6-85be-680ec6929e84)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 08:20:53,949 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 08:20:54,950 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 08:20:55,231 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:20:58,243 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:20:58,501 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:20:58,660 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:20:58,992 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:20:59,155 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:21:02,562 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:21:08,725 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:21:43,314 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 08:27:01,302 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:27:01,329 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 70421bff-1940-474a-bdcc-d31d73a83245)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 08:27:01,329 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 08:27:02,331 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 08:27:02,576 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:27:05,593 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:27:05,851 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:27:06,019 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:27:06,358 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:27:06,516 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:27:09,933 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:27:15,133 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:27:45,789 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 08:33:11,007 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:33:11,033 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 7d8d3563-f58b-4214-9e8b-bf88c4d234cb)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 08:33:11,033 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 08:33:12,034 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 08:33:12,276 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:33:15,396 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:33:15,639 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:33:15,824 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:33:16,132 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:33:16,297 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:33:20,110 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:33:25,601 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:33:56,735 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 08:38:48,365 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:38:48,391 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: cea42e5a-2f95-4b40-8f3d-e5d552d30e44)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 08:38:48,391 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 08:38:49,392 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 08:38:49,630 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:38:52,339 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:38:52,579 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:38:52,735 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:38:53,090 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:38:54,188 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:38:57,898 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:39:03,630 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:39:32,914 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 08:44:43,388 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:44:43,414 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 9b3008ad-01d2-4682-92e8-10b3a88d4d20)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 08:44:43,415 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 08:44:44,416 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 08:44:44,674 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:44:47,335 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:44:47,579 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:44:47,744 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:44:48,054 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:44:48,215 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:44:51,640 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:44:56,553 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:45:27,412 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 08:50:42,725 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 08:50:42,752 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: f3e6faa3-bd4d-4783-8a86-639b78126b69)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 08:50:42,752 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 08:50:43,753 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 08:50:44,001 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 08:50:46,593 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 08:50:46,845 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 08:50:47,006 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 08:50:47,330 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 08:50:47,494 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 08:50:51,025 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 08:50:56,417 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 08:51:28,095 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:05:41,303 - INFO - PyTorch version 2.6.0 available.
+2025-12-08 09:05:44,728 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-08 09:05:44,728 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 09:05:44,728 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-08 09:05:44,728 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 09:05:44,728 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-08 09:05:44,729 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-08 09:05:44,729 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 09:05:44,729 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-08 09:05:44,729 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-08 09:05:44,729 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 09:05:44,729 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-08 09:05:44,730 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-08 09:05:46,581 - INFO - Use pytorch device_name: cuda:0
+2025-12-08 09:05:46,581 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-08 09:05:46,583 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:05:46,817 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-08 09:05:46,846 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-08 09:05:47,001 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-08 09:05:47,034 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-08 09:05:47,188 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-08 09:05:47,216 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-08 09:05:47,409 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-08 09:05:47,438 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-08 09:05:47,594 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-08 09:05:47,623 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-08 09:05:47,777 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-08 09:05:47,806 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-08 09:05:47,975 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-08 09:05:48,129 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-08 09:05:48,158 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-08 09:05:48,349 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-08 09:05:48,377 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:05:48,536 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:05:48,730 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-08 09:05:48,758 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-08 09:05:48,917 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6949
+2025-12-08 09:05:50,877 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:05:51,039 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:05:54,464 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:05:54,626 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:05:54,963 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:05:55,140 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:05:58,613 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:06:08,183 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:07:00,059 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:13:52,512 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:13:52,540 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 8b62261c-5e76-4756-b119-7adc0e9574a9)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:13:52,540 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:13:53,541 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:13:53,779 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:13:56,408 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:13:56,672 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:13:56,830 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:13:57,171 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:13:57,331 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:14:00,752 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:14:06,300 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:14:35,381 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:19:37,326 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:19:37,352 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 706f979f-9932-429c-be2e-71cb048d476e)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:19:37,352 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:19:38,353 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:19:38,609 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:19:41,456 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:19:41,714 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:19:41,880 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:19:42,208 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:19:42,367 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:19:46,082 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:19:51,026 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:20:19,219 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:25:37,440 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:25:37,466 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 867c2dc0-b6ac-4e6a-992d-8e8e5a584639)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:25:37,466 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:25:38,468 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:25:38,765 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:25:41,957 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:25:42,211 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:25:42,380 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:25:42,700 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:25:42,916 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:25:46,400 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:25:51,853 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:26:22,143 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:32:54,403 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:32:54,429 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 9cc288d1-74a6-490e-b7fb-e9417db6f814)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:32:54,429 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:32:55,430 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:32:55,670 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:32:58,562 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:32:58,813 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:32:58,979 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:32:59,287 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:32:59,444 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:33:02,561 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:33:07,564 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:33:35,274 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:38:44,299 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:38:44,325 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 2b83d5f2-8b6e-4a9c-9949-2e1d3ae352db)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:38:44,326 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:38:45,327 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:38:45,572 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:38:48,098 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:38:48,333 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:38:48,507 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:38:48,826 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:38:48,987 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:38:52,967 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:38:58,405 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:39:30,593 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:44:43,459 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:44:43,485 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 7b94841b-d80a-49f4-b408-581b9c5b4229)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:44:43,486 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:44:44,487 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:44:44,736 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:44:46,998 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:44:47,232 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:44:47,392 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:44:47,697 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:44:47,855 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:44:51,118 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:44:56,005 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:45:22,053 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 09:50:54,557 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 09:50:54,583 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 44507c60-4f4d-4712-92d0-061fc20c8f84)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 09:50:54,583 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:50:55,584 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 09:50:55,817 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 09:50:58,584 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 09:50:58,837 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 09:50:59,004 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 09:50:59,308 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 09:50:59,469 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 09:51:02,723 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 09:51:07,550 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 09:51:36,994 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 22:42:38,057 - INFO - PyTorch version 2.6.0 available.
+2025-12-08 22:42:41,376 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-08 22:42:41,376 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 22:42:41,376 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-08 22:42:41,376 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 22:42:41,377 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-08 22:42:41,377 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-08 22:42:41,377 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 22:42:41,377 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-08 22:42:41,378 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-08 22:42:41,378 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-08 22:42:41,378 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-08 22:42:41,378 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-08 22:42:42,966 - INFO - Use pytorch device_name: cuda:0
+2025-12-08 22:42:42,966 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-08 22:42:42,968 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 22:42:43,195 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-08 22:42:43,221 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-08 22:42:43,373 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-08 22:42:43,402 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-08 22:42:43,558 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-08 22:42:43,583 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-08 22:42:43,737 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-08 22:42:43,765 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-08 22:42:43,920 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-08 22:42:43,944 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-08 22:42:44,099 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-08 22:42:44,123 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-08 22:42:44,281 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-08 22:42:44,433 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-08 22:42:44,461 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-08 22:42:44,644 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-08 22:42:44,668 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 22:42:44,826 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 22:42:45,014 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-08 22:42:45,039 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-08 22:42:45,197 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6966
+2025-12-08 22:42:46,871 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 22:42:47,028 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 22:42:51,242 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 22:42:51,402 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 22:42:51,762 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 22:42:51,924 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 22:42:55,490 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 22:43:05,859 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 22:43:59,775 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 22:57:30,433 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 22:57:30,457 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 40197ef2-256a-4895-8e97-d2d712adcd4e)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 22:57:30,457 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 22:57:31,458 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 22:57:31,714 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 22:57:34,960 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 22:57:35,199 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 22:57:35,367 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 22:57:35,702 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 22:57:35,865 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 22:57:39,427 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 22:57:46,180 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 22:58:27,264 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 23:03:32,855 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 23:03:32,878 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: a1dbfe5c-9f41-4330-8013-40e88646d0a7)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 23:03:32,878 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 23:03:33,880 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 23:03:38,475 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 23:03:41,054 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 23:03:41,282 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 23:03:41,439 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 23:03:41,755 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 23:03:41,909 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 23:03:45,545 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 23:03:50,776 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 23:04:28,683 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 23:09:42,176 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 23:09:42,199 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 60458df1-c5c3-412b-a9c6-d8688a6719c2)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 23:09:42,199 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 23:09:43,200 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 23:09:47,604 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 23:09:50,274 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 23:09:50,534 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 23:09:50,701 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 23:09:51,036 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 23:09:51,209 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 23:09:54,651 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 23:10:00,101 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 23:10:28,764 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 23:24:57,385 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 23:24:57,406 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: f9986969-762e-4e19-abda-6d2fb480bd9c)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 23:24:57,406 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 23:24:58,407 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 23:24:58,644 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 23:25:01,592 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 23:25:01,822 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 23:25:01,984 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 23:25:02,303 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 23:25:02,460 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 23:25:06,268 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 23:25:11,778 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 23:25:40,918 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 23:30:24,684 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 23:30:24,707 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 1d23adb0-7091-4451-8603-256423a2ab53)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 23:30:24,707 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 23:30:25,708 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 23:30:25,969 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 23:30:28,677 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 23:30:28,896 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 23:30:29,048 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 23:30:29,380 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 23:30:29,546 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 23:30:33,155 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 23:30:38,506 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 23:31:06,242 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 23:36:10,624 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 23:36:10,643 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: b385e10b-3b7c-445e-98c4-e8f00066577e)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 23:36:10,643 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 23:36:11,644 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 23:36:11,916 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 23:36:14,484 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 23:36:14,703 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 23:36:14,938 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 23:36:15,265 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 23:36:15,418 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 23:36:18,843 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 23:36:24,055 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 23:36:54,179 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0
+2025-12-08 23:46:42,727 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-08 23:46:42,750 - WARNING - '(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')), '(Request ID: 8fba9f5c-cab7-4334-aeba-f8b561138d33)')' thrown while requesting HEAD https://huggingface.co/google/gemma-2-9b-it/resolve/main/config.json
+2025-12-08 23:46:42,750 - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 23:46:43,751 - DEBUG - Starting new HTTPS connection (2): huggingface.co:443
+2025-12-08 23:46:44,001 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-08 23:46:46,513 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-08 23:46:46,739 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-08 23:46:46,908 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-08 23:46:47,228 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-08 23:46:47,380 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-08 23:46:50,819 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-08 23:46:55,838 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-08 23:47:28,530 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-scope-9b-it-res/resolve/main/layer_31/width_16k/average_l0_76/params.npz HTTP/1.1" 302 0

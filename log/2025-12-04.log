@@ -1,0 +1,127 @@
+2025-12-04 08:58:52,128 - INFO - PyTorch version 2.6.0 available.
+2025-12-04 08:58:59,805 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-04 08:58:59,806 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:58:59,806 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-04 08:58:59,806 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:58:59,806 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-04 08:58:59,807 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-04 08:58:59,807 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:58:59,807 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-04 08:58:59,808 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-04 08:58:59,808 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:58:59,808 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-04 08:58:59,808 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-04 08:59:03,838 - INFO - Use pytorch device_name: cuda:0
+2025-12-04 08:59:03,839 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-04 08:59:03,841 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-04 08:59:04,124 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-04 08:59:04,279 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-04 08:59:04,434 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-04 08:59:04,589 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-04 08:59:04,743 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-04 08:59:04,796 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-04 08:59:04,947 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-04 08:59:05,104 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-04 08:59:05,261 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-04 08:59:05,311 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-04 08:59:05,466 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-04 08:59:05,623 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-04 08:59:05,786 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-04 08:59:05,939 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-04 08:59:06,093 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-04 08:59:06,375 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-04 08:59:06,528 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-04 08:59:06,855 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-04 08:59:07,070 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-04 08:59:07,227 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-04 08:59:07,388 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6935
+2025-12-04 08:59:53,411 - INFO - PyTorch version 2.6.0 available.
+2025-12-04 08:59:56,834 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-04 08:59:56,834 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:59:56,834 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-04 08:59:56,834 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:59:56,835 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-04 08:59:56,835 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-04 08:59:56,835 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:59:56,835 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-04 08:59:56,836 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-04 08:59:56,836 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 08:59:56,836 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-04 08:59:56,836 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-04 08:59:58,597 - INFO - Use pytorch device_name: cuda:0
+2025-12-04 08:59:58,598 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-04 08:59:58,600 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-04 08:59:58,878 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-04 08:59:58,930 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-04 08:59:59,086 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-04 08:59:59,139 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-04 08:59:59,293 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-04 08:59:59,322 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-04 08:59:59,481 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-04 08:59:59,532 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-04 08:59:59,695 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-04 08:59:59,723 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-04 08:59:59,878 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-04 08:59:59,929 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-04 09:00:00,093 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-04 09:00:00,246 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-04 09:00:00,297 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-04 09:00:00,484 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-04 09:00:00,533 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-04 09:00:00,693 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-04 09:00:00,885 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-04 09:00:00,937 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-04 09:00:01,095 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6935
+2025-12-04 09:00:03,211 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-04 09:00:03,375 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-04 09:00:08,418 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-04 09:00:08,597 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-04 09:00:09,022 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-04 09:00:09,207 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-04 09:00:14,520 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-04 09:00:26,448 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-04 09:07:46,999 - INFO - PyTorch version 2.6.0 available.
+2025-12-04 09:07:52,610 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-04 09:07:52,611 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 09:07:52,611 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-04 09:07:52,611 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 09:07:52,611 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-04 09:07:52,612 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-04 09:07:52,613 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 09:07:52,613 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-04 09:07:52,613 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-04 09:07:52,613 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-04 09:07:52,613 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-04 09:07:52,613 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-04 09:07:54,621 - INFO - Use pytorch device_name: cuda:0
+2025-12-04 09:07:54,622 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-04 09:07:54,624 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-04 09:07:54,905 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-04 09:07:54,936 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-04 09:07:55,096 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-04 09:07:55,125 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-04 09:07:55,284 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-04 09:07:55,314 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-04 09:07:55,467 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-04 09:07:55,497 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-04 09:07:55,653 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-04 09:07:55,684 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-04 09:07:55,840 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-04 09:07:55,870 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-04 09:07:56,031 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-04 09:07:56,187 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-04 09:07:56,217 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-04 09:07:56,459 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-04 09:07:56,489 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-04 09:07:56,650 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-04 09:07:56,841 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-04 09:07:56,870 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-04 09:07:57,030 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6935
+2025-12-04 09:07:59,408 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-12-04 09:07:59,574 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-04 09:08:04,068 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-04 09:08:04,228 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-04 09:08:04,597 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-04 09:08:04,862 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-04 09:08:09,707 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-04 09:08:19,986 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping

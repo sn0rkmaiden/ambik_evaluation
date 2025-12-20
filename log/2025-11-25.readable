@@ -1,0 +1,2442 @@
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a whisk, a ladle, a porcelain cup, a beer mug, a ceramic mug, a glass mug, a plastic cup, a paper cup, a glass, a greek yogurt cup, a vanilla yogurt cup, canned olives, olive oil, sunflower oil.
+
+We: You have received the task “Kitchen Robot, please use a mug to mix together equal parts Greek yogurt and vanilla yogurt in.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please use a mug to mix together equal parts Greek yogurt and vanilla yogurt in."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": false,
+  "question": []
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a blender, a spatula, a whisk, mixed fruit jam, honey.
+
+We: You have received the task “Prepare a fruity tea beverage by combining hot water with mixed fruit jam in a cup, stirring well.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Prepare a fruity tea beverage by combining hot water with mixed fruit jam in a cup, stirring well."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a spatula, a blender, a knife block, crackers, chocolate teacakes, an energy bar, sea salt, table salt, granulated sugar, jasmine rice, brown rice, basmati rice, parmesan, blue cheese, cheddar cheese slices, cream cheese, mozzarella sticks, cottage cheese, a paring knife, a bread knife.
+
+We: You have received the task “Use the knife block to carefully select a sharp knife, then use it to slice the cheddar cheese slices into thin strips. Arrange the cheese strips on a plate, and microwave them for 30-45 seconds or until melted and bubbly.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Use the knife block to carefully select a sharp knife, then use it to slice the cheddar cheese slices into thin strips. Arrange the cheese strips on a plate, and microwave them for 30-45 seconds or until melted and bubbly."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": true,
+  "question": ["How should I use the knife block to cut the cheese, and what should I be careful of?"
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a knife block, paper towels, a citrus juicer, bottled water, an orange soda, a Red Bull can, muesli, cornflakes, a glass milk bottle, an oat milk bottle, a milk chocolate tablet, a dark chocolate tablet, an almond milk chocolate tablet, oranges, apples.
+
+We: You have received the task “Robot, please squeeze half a cup of fresh orange juice using the citrus juicer and the oranges.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please squeeze half a cup of fresh orange juice using the citrus juicer and the oranges."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": false,
+  "question": ["How should I extract the juice from the oranges?"
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a chair, a porcelain cup, a beer mug, a ceramic mug, a glass mug, a plastic cup, a paper cup, a glass, an almond milk chocolate tablet, a dark chocolate tablet, a milk chocolate tablet, mustard, tomato paste, cottage cheese, mozzarella sticks, cheddar cheese slices, cream cheese, a Coca-Cola can, bottled water, a Sprite bottle, an orange soda, bottled iced tea, a Red Bull can, honey.
+
+We: You have received the task “Kitchen Robot, please melt the dark chocolate tablet in the microwave and use it as a dip.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please melt the dark chocolate tablet in the microwave and use it as a dip."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": true,
+  "question": ["Where should I melt the dark chocolate tablet and how can I use it as a dip?"
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a corkscrew, a vegetable peeler, a potato masher, jalapeno chips, rice chips, a glass milk bottle, an oat milk bottle, an oat milk, a cow's milk.
+
+We: You have received the task “Open the milk bottle, pour a glass of milk, and place it on the kitchen table.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Open the milk bottle, pour a glass of milk, and place it on the kitchen table."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a spatula, a plastic dinner plate, a plastic bread plate, a plastic salad plate, a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, a glass dinner plate, a glass bread plate, a glass salad plate, a grater, rice chips, potato chips.
+
+We: You have received the task “Place a plate on the kitchen table.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Place a plate on the kitchen table."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": false,
+  "question": null
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a blender, a citrus juicer, a whisk, sea salt, table salt, grapes, a lemon, a banana, an orange, an apple, a peach, an avocado, honey.
+
+We: You have received the task “Robot, please use the citrus juicer to squeeze the juice from a lemon. Then, use the blender to mix together a quick and easy lemon and avocado smoothie. Use a lemon, an avocado, and a tablespoon of honey.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please use the citrus juicer to squeeze the juice from a lemon. Then, use the blender to mix together a quick and easy lemon and avocado smoothie. Use a lemon, an avocado, and a tablespoon of honey."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should I squeeze the lemon?"}
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a plastic dinner plate, a plastic bread plate, a plastic salad plate, a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, a glass dinner plate, a glass bread plate, a glass salad plate, a dish rack, a clean sponge, a dirty sponge, a dish soap, mixed fruit jam, condensed milk, black tea bags, green tea bags, cream cheese, cheddar cheese slices, parmesan.
+
+We: You have received the task “Please, use the clean sponge and the dish soap to wash the plates. Rinse them with hot water and place them on the dish rack to dry.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Please, use the clean sponge and the dish soap to wash the plates. Rinse them with hot water and place them on the dish rack to dry."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": false,
+  "question": []
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a kitchen towel, a metal bowl, a plastic bowl, a ceramic bowl, a citrus juicer, bacon, ham, a fresh mozzarella package, cheddar cheese slices, blue cheese, parmesan, cottage cheese, mozzarella sticks, a dark chocolate tablet, an almond milk chocolate tablet, pumpkin pie, apple pie, an energy bar.
+
+We: You have received the task “Grate 1/2 cup of parmesan cheese using a grater. Place the grated cheese in a clean, empty ceramic bowl and store it for later use.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Grate 1/2 cup of parmesan cheese using a grater. Place the grated cheese in a clean, empty ceramic bowl and store it for later use."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is knife, shears, a bottle opener, a peach, an avocado, a milk chocolate tablet, a dark chocolate tablet.
+
+We: You have received the task “Prepare a Peach and Avocado Plate.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Prepare a Peach and Avocado Plate."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a metal bowl, a plastic bowl, a ceramic bowl, a porcelain cup, a beer mug, a ceramic mug, a glass mug, a plastic cup, a paper cup, a glass, black tea bags, green tea bags, an energy bar, ice cubes, a bottle of water.
+
+We: You have received the task “Robot, please prepare a cold green tea using a green tea sachet, water, ice cubes in a cup.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please prepare a cold green tea using a green tea sachet, water, ice cubes in a cup."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a kitchen towel, a plastic dinner plate, a plastic bread plate, a plastic salad plate, a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, a glass dinner plate, a glass bread plate, a glass salad plate, a dish rack, honey, canned olives.
+
+We: You have received the task “Kitchen Robot, please take the canned olives from the pantry and drain them in the sink.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please take the canned olives from the pantry and drain them in the sink."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should I take the canned olives from?", "How do I drain them in the sink?"]
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a stainless steel tablespoon, a wooden tablespoon, a silver teaspoon, a garlic press, a ladle, a tomato, a bell pepper, a black pepper, an onion, a garlic, a cabbage, a cucumber, a potato, a carrot, granulated sugar, sea salt, table salt, mixed fruit jam.
+
+We: You have received the task “Robot, please chop the onion, bell pepper, and tomato into small pieces using a knife, and then mix them together in a bowl with a tablespoon of granulated sugar, a teaspoon of sea salt, and a pinch of black pepper to make a simple salsa.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please chop the onion, bell pepper, and tomato into small pieces using a knife, and then mix them together in a bowl with a tablespoon of granulated sugar, a teaspoon of sea salt, and a pinch of black pepper to make a simple salsa."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I chop the onion, bell pepper, and tomato?"]<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a vegetable peeler, a potato masher, a blender, eggs, an almond milk chocolate tablet, a dark chocolate tablet, mixed fruit jam, a mixing bowl, a whisk, a frying pan, baking powder.
+
+We: You have received the task “Robot, please blend together an egg with mixed fruit jam, almond milk, flour, baking powder in blender. Cook in frying pan with oil until golden brown. Serve with melted dark chocolate.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please blend together an egg with mixed fruit jam, almond milk, flour, baking powder in blender. Cook in frying pan with oil until golden brown. Serve with melted dark chocolate."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+**JSON Object:**
+
+```json
+{
+  "ambiguous": true,
+  "question": ["How should I blend the ingredients? What are the specific steps involved?"
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a plastic food storage container, a glass food storage container, chopsticks, a stainless steel dinner fork, a stainless steel salad fork, a stainless steel dinner knife, a greek yogurt cup, a strawberry yogurt cup, a vanilla yogurt cup, muesli, cornflakes, uncut white bread, a croissant, toasted bread, sliced whole wheat bread, an ice cream cake, a vanilla cake, a chocolate cake, a carrot cake.
+
+We: You have received the task “Spread a layer of yogurt onto a slice of toasted bread using the stainless steel dinner knife.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Spread a layer of yogurt onto a slice of toasted bread using the stainless steel dinner knife."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should the yogurt be placed on the bread?"}
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a mixer, a dish rack, sliced whole wheat bread, uncut white bread, honey, canned olives, mixed fruit jam, muesli, cornflakes, backing sheet, cupboard, oven.
+
+We: You have received the task “Kitchen Robot, please use the mixer to combine 2 tablespoons of honey with 1 cup of muesli and 1/2 cup of cornflakes. Then, spread the mixture evenly onto a bakeware and bake it in the oven at 350 degrees for 15 minutes to make a crunchy granola.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please use the mixer to combine 2 tablespoons of honey with 1 cup of muesli and 1/2 cup of cornflakes. Then, spread the mixture evenly onto a bakeware and bake it in the oven at 350 degrees for 15 minutes to make a crunchy granola."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should we add the mixture to be baked into a granola?"]
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is oven mitts, a bottle opener, a cow's milk bottle, an oat milk bottle, potato chips, jalapeno chips, a bottle of white wine, a bottle of red wine, honey.
+
+We: You have received the task “Kitchen Robot, please pour a glass of milk from the milk bottle into a glass and place it on the kitchen table.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please pour a glass of milk from the milk bottle into a glass and place it on the kitchen table."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": ["Where should I pour the glass of milk?"]
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a dish rack, a spatula, a glass milk bottle, an oat milk bottle, a vanilla yogurt cup, a greek yogurt cup, a strawberry yogurt cup.
+
+We: You have received the task “Kitchen Robot, please combine the contents of the vanilla yogurt cup, Greek yogurt cup, and strawberry yogurt cup together.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please combine the contents of the vanilla yogurt cup, Greek yogurt cup, and strawberry yogurt cup together."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should I put the combined contents of the vanilla yogurt cup, Greek yogurt cup, and strawberry yogurt cup?"]
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a spatula, a potholder, sliced whole wheat bread, uncut white bread, toasted bread, mixed fruit jam, canned olives.
+
+We: You have received the task “Robot, please use the spatula to spread a layer of mixed fruit jam on top of a slice of bread.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please use the spatula to spread a layer of mixed fruit jam on top of a slice of bread."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": true,
+  "question": ["Where should I spread the mixed fruit jam?", "How much jam should I use?"]
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is oven mitts, a potholder, a kitchen towel, a metal bowl, a plastic bowl, a ceramic bowl, apple pie, key lime pie, cream pie, shepherd's pie, pumpkin pie, honey, muesli, cornflakes, potato chips, jalapeno chips, rice chips.
+
+We: You have received the task “Retrieve the ceramic bowl and place a slice of pie inside without causing any damage to the kitchen appliances or utensils.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Retrieve the ceramic bowl and place a slice of pie inside without causing any damage to the kitchen appliances or utensils."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+**JSON object:**
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a whisk, a clean sponge, a dirty sponge, a dish soap, shears, cream cheese, a fresh mozzarella package, cheddar cheese slices, mozzarella sticks, honey, a tomato, a black pepper, a cucumber, a garlic, a carrot, a potato, a bell pepper.
+
+We: You have received the task “Kitchen Robot, please mix together cream cheese and honey in a bowl to make a sweet cream cheese dip.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Kitchen Robot, please mix together cream cheese and honey in a bowl to make a sweet cream cheese dip."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a blender, a mixer, a clean sponge, a dirty sponge, a dish soap, bacon, ham, sunflower oil, coconut oil, olive oil, a vanilla yogurt cup, a greek yogurt cup, granulated sugar, table salt, sea salt.
+
+We: You have received the task “Please, blend the bacon and ham together with the blender. Then, mix in 1 tablespoon of olive oil and 1 teaspoon of table salt in a small bowl.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Please, blend the bacon and ham together with the blender. Then, mix in 1 tablespoon of olive oil and 1 teaspoon of table salt in a small bowl."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": []
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a mixer, shears, frozen vegetable pizza, frozen mushroom pizza, frozen pepperoni pizza, frozen sausage pizza, a milk chocolate tablet, an almond milk chocolate tablet, a dark chocolate tablet, green seedless grapes, red seedless grapes, black seedless grapes, sea salt, table salt, granulated sugar, a lemon, a peach, an orange, a pineapple, a pear, a banana, an apple, an avocado, a watermelon, a kiwi, an apricot, a melon.
+
+We: You have received the task “Preheat the oven to the temperature recommended on the frozen vegetable pizza packaging, and then place the pizza in the oven on a baking sheet or directly on the rack, ensuring to set a timer for the recommended cooking time.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Preheat the oven to the temperature recommended on the frozen vegetable pizza packaging, and then place the pizza in the oven on a baking sheet or directly on the rack, ensuring to set a timer for the recommended cooking time."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": ""
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a frying pan, a grill pan, a saucepan, a porcelain cup, a beer mug, a ceramic mug, a glass mug, a plastic cup, a paper cup, a glass, a bread knife, a paring knife, a butter knife, a cutting board, table salt, sea salt, a Pepsi can, an orange soda, bottled iced tea, a Sprite bottle, a Red Bull can, bottled water, a Coca-Cola can, a beer can, bacon, ham.
+
+We: You have received the task “Pick up an egg and crack it into a stainless steel salad bowl, being careful not to break the yolk or get any shells into the bowl.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Pick up an egg and crack it into a stainless steel salad bowl, being careful not to break the yolk or get any shells into the bowl."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": true,
+  "question": ["Where should I crack the egg and how should I avoid breaking the yolk or getting any shell in the bowl?"<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is paper towels, a toaster, a ladle, mustard, ketchup, tomato paste, mayonnaise, sunflower oil, olive oil, coconut oil, cheddar cheese slices, a fresh mozzarella package, mozzarella sticks, cream cheese, black tea bags, green tea bags, a tomato, a potato.
+
+We: You have received the task “Robot, please use the toaster to toast a slice of bread. Then, spread a layer of cream cheese on top and add a slice of cheddar cheese. Place a slice of fresh tomato and mozzarella on top of the cheese. Serve the open-faced sandwich with a side of mixed greens salad and a glass of iced tea.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please use the toaster to toast a slice of bread. Then, spread a layer of cream cheese on top and add a slice of cheddar cheese. Place a slice of fresh tomato and mozzarella on top of the cheese. Serve the open-faced sandwich with a side of mixed greens salad and a glass of iced tea."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+
+  "ambiguous": false,
+
+  "question": "Toast the bread, spread cream cheese and cheddar cheese, and add tomato and mozzarella."<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a stainless steel tablespoon, a wooden tablespoon, a silver teaspoon, a bottle opener, a plastic dinner plate, a plastic bread plate, a plastic salad plate, a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, a glass dinner plate, a glass bread plate, a glass salad plate, coconut oil, olive oil, sunflower oil, a Coca-Cola can, an orange soda, a Pepsi can, ice cubes, a glass.
+
+We: You have received the task “Robot, please open the Coca-Cola can using the bottle opener and pour it somewhere over ice.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Robot, please open the Coca-Cola can using the bottle opener and pour it somewhere over ice."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should I open the Coca-Cola can?", "Why should I open it?"]
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a plastic dinner plate, a plastic bread plate, a plastic salad plate, a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, a glass dinner plate, a glass bread plate, a glass salad plate, a clean sponge, a dirty sponge, a dish soap, shears, buckwheat, jasmine rice, basmati rice, a glass milk bottle, an oat milk bottle, a greek yogurt cup, a vanilla yogurt cup, jalapeno chips, rice chips, shears.
+
+We: You have received the task “Cut open the package of jalapeno chips. Wash a ceramic salad plate with clean sponge and dish soap. Place jalapeno chips on the plate and serve with Greek yogurt.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Cut open the package of jalapeno chips. Wash a ceramic salad plate with clean sponge and dish soap. Place jalapeno chips on the plate and serve with Greek yogurt."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": false,
+  "question": ""
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is oven mitts, a bread knife, a paring knife, a butter knife, a cutting board, strawberries, blueberries, blackberries, cherries, raspberries, eggs.
+
+We: You have received the task “Use the cutting board and the paring knife to carefully and efficiently prepare a mixture of fruits and eggs. Bake the mixture in the oven until set and golden brown, then serve with a topping.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Use the cutting board and the paring knife to carefully and efficiently prepare a mixture of fruits and eggs. Bake the mixture in the oven until set and golden brown, then serve with a topping."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+{
+  "ambiguous": false,
+  "question": []
+}<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+
+========================
+========================
+========================
+User: We: You are a robot operating in an office kitchen. You are in front of a counter with two closed drawers, a top one and a bottom one. There is also a landfill bin, a recycling bin, and a compost bin.
+
+We: Apart from that, in the kitchen there is a soup pot, a stockpot, a toaster, a potato, a tomato, a cucumber, a sweet onion, a bell pepper, a black pepper, a cabbage, a yellow onion, a strawberry yogurt cup, a vanilla yogurt cup, chicken nuggets, chicken balls.
+
+We: You have received the task “Prepare a dish with sweet onion and bell pepper in the soup pot.“. 
+
+Decide whether this task is ambiguous. 
+
+If it is ambiguous, generate one or more clarifying questions that would help you perform it correctly.
+
+
+
+Return your final answer **only** as a JSON object in the following format:
+
+
+
+{
+
+  "ambiguous": true or false,
+
+  "question": ["question 1", "question 2", ...]
+
+}
+
+
+
+Formatting rules:
+
+- Always output exactly one JSON object.
+
+- If the task is **not ambiguous**, use `"ambiguous": false` and `"question": []`.
+
+- If the task **is ambiguous**, use `"ambiguous": true` and provide at least one question.
+
+- Never output explanations or text outside the JSON.
+
+- If unsure, make your best judgment and still output a valid JSON.
+
+
+
+Example:
+
+Task: "Put the red cup away."
+
+Output:
+
+{
+
+  "ambiguous": true,
+
+  "question": ["Where should I put the red cup?", "In which drawer or on the counter?"]
+
+}
+
+
+
+Now analyze the following task:
+
+"Prepare a dish with sweet onion and bell pepper in the soup pot."
+
+Return **only** a valid JSON object without any extra text.
+Assistant:
+Return only a valid JSON object without any extra text.
+		LLM output:
+Return only a valid JSON object without any extra text.
+
+```json
+{
+  "ambiguous": true,
+  "question": ["Where should I add the sweet onion and bell pepper to the soup?"
+}
+```<eos>
+
+		LLM Model:	gemma-2b-it
+========================
+========================
+========================
+
+

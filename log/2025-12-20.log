@@ -1,0 +1,52 @@
+2025-12-20 07:42:04,026 - INFO - PyTorch version 2.6.0 available.
+2025-12-20 07:42:07,414 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-12-20 07:42:07,415 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-20 07:42:07,415 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-12-20 07:42:07,415 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-20 07:42:07,415 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-12-20 07:42:07,416 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-12-20 07:42:07,416 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-20 07:42:07,416 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-20 07:42:07,416 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-12-20 07:42:07,416 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-12-20 07:42:07,416 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-12-20 07:42:07,417 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-12-20 07:42:09,136 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-12-20 07:42:09,357 - DEBUG - https://huggingface.co:443 "HEAD /roberta-large-mnli/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-20 07:42:09,523 - DEBUG - https://huggingface.co:443 "GET /api/models/roberta-large-mnli/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 307 141
+2025-12-20 07:42:09,674 - DEBUG - https://huggingface.co:443 "GET /api/models/FacebookAI/roberta-large-mnli/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-20 07:42:09,957 - DEBUG - https://huggingface.co:443 "HEAD /roberta-large-mnli/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-20 07:42:13,197 - INFO - Use pytorch device_name: cuda:0
+2025-12-20 07:42:13,197 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-12-20 07:42:13,353 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-20 07:42:13,377 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-20 07:42:13,530 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-20 07:42:13,554 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-20 07:42:13,703 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-12-20 07:42:13,726 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-12-20 07:42:13,874 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-12-20 07:42:13,898 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-12-20 07:42:14,049 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-12-20 07:42:14,076 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-12-20 07:42:14,236 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-12-20 07:42:14,260 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-12-20 07:42:14,410 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-12-20 07:42:14,562 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-12-20 07:42:14,585 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-12-20 07:42:14,762 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-12-20 07:42:14,784 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-20 07:42:14,956 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-20 07:42:15,140 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-12-20 07:42:15,162 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-12-20 07:42:15,319 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6809
+2025-12-20 07:42:15,545 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-12-20 07:42:16,867 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-12-20 07:42:17,029 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-12-20 07:42:17,310 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-12-20 07:42:17,467 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-12-20 07:42:19,480 - WARNING - With reduced precision, it is advised to use `from_pretrained_no_processing` instead of `from_pretrained`.
+2025-12-20 07:42:21,724 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-12-20 07:42:38,660 - DEBUG - https://huggingface.co:443 "HEAD /jbloom/Gemma-2b-IT-Residual-Stream-SAEs/resolve/main/gemma_2b_it_blocks.12.hook_resid_post_16384/cfg.json HTTP/1.1" 307 0
+2025-12-20 07:42:38,682 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/jbloom/Gemma-2b-IT-Residual-Stream-SAEs/16e463a92df02f0463e94555519ebafe11067cab/gemma_2b_it_blocks.12.hook_resid_post_16384%2Fcfg.json HTTP/1.1" 200 0
+2025-12-20 07:42:38,879 - DEBUG - https://huggingface.co:443 "HEAD /jbloom/Gemma-2b-IT-Residual-Stream-SAEs/resolve/main/gemma_2b_it_blocks.12.hook_resid_post_16384/sae_weights.safetensors HTTP/1.1" 302 0
+2025-12-20 07:42:39,037 - DEBUG - https://huggingface.co:443 "HEAD /jbloom/Gemma-2b-IT-Residual-Stream-SAEs/resolve/main/gemma_2b_it_blocks.12.hook_resid_post_16384/sparsity.safetensors HTTP/1.1" 302 0

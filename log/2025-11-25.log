@@ -1,0 +1,367 @@
+2025-11-25 18:58:19,581 - INFO - PyTorch version 2.6.0 available.
+2025-11-25 18:58:23,132 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-11-25 18:58:23,133 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 18:58:23,133 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-11-25 18:58:23,133 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 18:58:23,133 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-11-25 18:58:23,134 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-11-25 18:58:23,134 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 18:58:23,134 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 18:58:23,134 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-11-25 18:58:23,134 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 18:58:23,134 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 18:58:23,134 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-11-25 18:58:24,908 - INFO - Use pytorch device_name: cuda:0
+2025-11-25 18:58:24,908 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-25 18:58:24,910 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 18:58:25,151 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 18:58:25,173 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 18:58:25,179 - DEBUG - Attempting to acquire lock 140695426746256 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/952a9b81c0bfd99800fabf352f69c7ccd46c5e43.lock
+2025-11-25 18:58:25,179 - DEBUG - Lock 140695426746256 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/952a9b81c0bfd99800fabf352f69c7ccd46c5e43.lock
+2025-11-25 18:58:25,204 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 349
+2025-11-25 18:58:25,208 - DEBUG - Attempting to release lock 140695426746256 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/952a9b81c0bfd99800fabf352f69c7ccd46c5e43.lock
+2025-11-25 18:58:25,208 - DEBUG - Lock 140695426746256 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/952a9b81c0bfd99800fabf352f69c7ccd46c5e43.lock
+2025-11-25 18:58:25,354 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 18:58:25,377 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 18:58:25,377 - DEBUG - Attempting to acquire lock 140695427262096 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fd1b291129c607e5d49799f87cb219b27f98acdf.lock
+2025-11-25 18:58:25,378 - DEBUG - Lock 140695427262096 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fd1b291129c607e5d49799f87cb219b27f98acdf.lock
+2025-11-25 18:58:25,400 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 116
+2025-11-25 18:58:25,401 - DEBUG - Attempting to release lock 140695427262096 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fd1b291129c607e5d49799f87cb219b27f98acdf.lock
+2025-11-25 18:58:25,401 - DEBUG - Lock 140695427262096 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fd1b291129c607e5d49799f87cb219b27f98acdf.lock
+2025-11-25 18:58:25,545 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 18:58:25,567 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 18:58:25,714 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-11-25 18:58:25,738 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-11-25 18:58:25,739 - DEBUG - Attempting to acquire lock 140695426850704 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/58d4a9a45664eb9e12de9549c548c09b6134c17f.lock
+2025-11-25 18:58:25,739 - DEBUG - Lock 140695426850704 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/58d4a9a45664eb9e12de9549c548c09b6134c17f.lock
+2025-11-25 18:58:25,761 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 None
+2025-11-25 18:58:25,762 - DEBUG - Attempting to release lock 140695426850704 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/58d4a9a45664eb9e12de9549c548c09b6134c17f.lock
+2025-11-25 18:58:25,762 - DEBUG - Lock 140695426850704 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/58d4a9a45664eb9e12de9549c548c09b6134c17f.lock
+2025-11-25 18:58:25,910 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 18:58:25,932 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 18:58:26,078 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-11-25 18:58:26,104 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-11-25 18:58:26,105 - DEBUG - Attempting to acquire lock 140695426849488 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/59d594003bf59880a884c574bf88ef7555bb0202.lock
+2025-11-25 18:58:26,105 - DEBUG - Lock 140695426849488 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/59d594003bf59880a884c574bf88ef7555bb0202.lock
+2025-11-25 18:58:26,127 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 53
+2025-11-25 18:58:26,128 - DEBUG - Attempting to release lock 140695426849488 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/59d594003bf59880a884c574bf88ef7555bb0202.lock
+2025-11-25 18:58:26,129 - DEBUG - Lock 140695426849488 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/59d594003bf59880a884c574bf88ef7555bb0202.lock
+2025-11-25 18:58:26,275 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-11-25 18:58:26,434 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-11-25 18:58:26,460 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-11-25 18:58:26,460 - DEBUG - Attempting to acquire lock 140695426856528 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/72b987fd805cfa2b58c4c8c952b274a11bfd5a00.lock
+2025-11-25 18:58:26,461 - DEBUG - Lock 140695426856528 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/72b987fd805cfa2b58c4c8c952b274a11bfd5a00.lock
+2025-11-25 18:58:26,482 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 612
+2025-11-25 18:58:26,483 - DEBUG - Attempting to release lock 140695426856528 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/72b987fd805cfa2b58c4c8c952b274a11bfd5a00.lock
+2025-11-25 18:58:26,483 - DEBUG - Lock 140695426856528 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/72b987fd805cfa2b58c4c8c952b274a11bfd5a00.lock
+2025-11-25 18:58:26,632 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/model.safetensors HTTP/1.1" 302 0
+2025-11-25 18:58:26,634 - DEBUG - Attempting to acquire lock 140695426854032 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db.lock
+2025-11-25 18:58:26,634 - DEBUG - Lock 140695426854032 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db.lock
+2025-11-25 18:58:26,788 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/xet-read-token/c9745ed1d9f207416be6d2e6f8de32d1f16199bf HTTP/1.1" 200 365
+2025-11-25 18:58:28,289 - DEBUG - Attempting to release lock 140695426854032 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db.lock
+2025-11-25 18:58:28,289 - DEBUG - Lock 140695426854032 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db.lock
+2025-11-25 18:58:28,468 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-11-25 18:58:28,491 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 18:58:28,492 - DEBUG - Attempting to acquire lock 140695426902928 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/c79f2b6a0cea6f4b564fed1938984bace9d30ff0.lock
+2025-11-25 18:58:28,492 - DEBUG - Lock 140695426902928 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/c79f2b6a0cea6f4b564fed1938984bace9d30ff0.lock
+2025-11-25 18:58:28,515 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 350
+2025-11-25 18:58:28,516 - DEBUG - Attempting to release lock 140695426902928 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/c79f2b6a0cea6f4b564fed1938984bace9d30ff0.lock
+2025-11-25 18:58:28,516 - DEBUG - Lock 140695426902928 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/c79f2b6a0cea6f4b564fed1938984bace9d30ff0.lock
+2025-11-25 18:58:28,671 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 18:58:28,819 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/vocab.txt HTTP/1.1" 307 0
+2025-11-25 18:58:28,841 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/vocab.txt HTTP/1.1" 200 0
+2025-11-25 18:58:28,842 - DEBUG - Attempting to acquire lock 140695427516880 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+2025-11-25 18:58:28,842 - DEBUG - Lock 140695427516880 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+2025-11-25 18:58:28,867 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/vocab.txt HTTP/1.1" 200 None
+2025-11-25 18:58:28,897 - DEBUG - Attempting to release lock 140695427516880 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+2025-11-25 18:58:28,897 - DEBUG - Lock 140695427516880 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+2025-11-25 18:58:29,043 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer.json HTTP/1.1" 307 0
+2025-11-25 18:58:29,066 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer.json HTTP/1.1" 200 0
+2025-11-25 18:58:29,067 - DEBUG - Attempting to acquire lock 140695427071696 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/cb202bfe2e3c98645018a6d12f182a434c9d3e02.lock
+2025-11-25 18:58:29,067 - DEBUG - Lock 140695427071696 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/cb202bfe2e3c98645018a6d12f182a434c9d3e02.lock
+2025-11-25 18:58:29,093 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer.json HTTP/1.1" 200 None
+2025-11-25 18:58:29,118 - DEBUG - Attempting to release lock 140695427071696 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/cb202bfe2e3c98645018a6d12f182a434c9d3e02.lock
+2025-11-25 18:58:29,118 - DEBUG - Lock 140695427071696 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/cb202bfe2e3c98645018a6d12f182a434c9d3e02.lock
+2025-11-25 18:58:29,273 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2025-11-25 18:58:29,419 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/special_tokens_map.json HTTP/1.1" 307 0
+2025-11-25 18:58:29,442 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/special_tokens_map.json HTTP/1.1" 200 0
+2025-11-25 18:58:29,442 - DEBUG - Attempting to acquire lock 140695427530576 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+2025-11-25 18:58:29,443 - DEBUG - Lock 140695427530576 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+2025-11-25 18:58:29,465 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/special_tokens_map.json HTTP/1.1" 200 112
+2025-11-25 18:58:29,467 - DEBUG - Attempting to release lock 140695427530576 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+2025-11-25 18:58:29,467 - DEBUG - Lock 140695427530576 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+2025-11-25 18:58:29,615 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/chat_template.jinja HTTP/1.1" 404 0
+2025-11-25 18:58:29,801 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-11-25 18:58:29,824 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-11-25 18:58:29,828 - DEBUG - Attempting to acquire lock 140695426847248 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/d1514c3162bbe87b343f565fadc62e6c06f04f03.lock
+2025-11-25 18:58:29,829 - DEBUG - Lock 140695426847248 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/d1514c3162bbe87b343f565fadc62e6c06f04f03.lock
+2025-11-25 18:58:29,851 - DEBUG - https://huggingface.co:443 "GET /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 190
+2025-11-25 18:58:29,852 - DEBUG - Attempting to release lock 140695426847248 on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/d1514c3162bbe87b343f565fadc62e6c06f04f03.lock
+2025-11-25 18:58:29,852 - DEBUG - Lock 140695426847248 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--sentence-transformers--all-MiniLM-L6-v2/d1514c3162bbe87b343f565fadc62e6c06f04f03.lock
+2025-11-25 18:58:30,007 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6955
+2025-11-25 18:58:31,867 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-11-25 18:58:32,016 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 401 0
+2025-11-25 18:58:32,166 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 401 0
+2025-11-25 19:00:40,235 - INFO - PyTorch version 2.6.0 available.
+2025-11-25 19:00:43,630 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-11-25 19:00:43,630 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:00:43,631 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-11-25 19:00:43,631 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:00:43,631 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-11-25 19:00:43,632 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-11-25 19:00:43,632 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:00:43,632 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 19:00:43,632 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-11-25 19:00:43,632 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:00:43,632 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 19:00:43,632 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-11-25 19:00:45,299 - INFO - Use pytorch device_name: cuda:0
+2025-11-25 19:00:45,300 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-25 19:00:45,302 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:00:45,531 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 19:00:45,672 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 19:00:45,829 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 19:00:45,974 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 19:00:46,122 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 19:00:46,169 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 19:00:46,319 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-11-25 19:00:46,461 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-11-25 19:00:46,612 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 19:00:46,660 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 19:00:46,811 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-11-25 19:00:46,952 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-11-25 19:00:47,108 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-11-25 19:00:47,260 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-11-25 19:00:47,404 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-11-25 19:00:47,586 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-11-25 19:00:47,731 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 19:00:47,897 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 19:00:48,090 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-11-25 19:00:48,232 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-11-25 19:00:48,388 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6955
+2025-11-25 19:00:50,171 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-11-25 19:00:50,340 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-11-25 19:00:50,345 - DEBUG - Attempting to acquire lock 140407548351952 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/84190b614ec1178982c7ae25776d6a269ccf4f93.lock
+2025-11-25 19:00:50,346 - DEBUG - Lock 140407548351952 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/84190b614ec1178982c7ae25776d6a269ccf4f93.lock
+2025-11-25 19:00:50,510 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 857
+2025-11-25 19:00:50,515 - DEBUG - Attempting to release lock 140407548351952 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/84190b614ec1178982c7ae25776d6a269ccf4f93.lock
+2025-11-25 19:00:50,515 - DEBUG - Lock 140407548351952 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/84190b614ec1178982c7ae25776d6a269ccf4f93.lock
+2025-11-25 19:00:50,688 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/model.safetensors HTTP/1.1" 404 0
+2025-11-25 19:00:50,849 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/model.safetensors.index.json HTTP/1.1" 200 0
+2025-11-25 19:00:50,849 - DEBUG - Attempting to acquire lock 140407538751056 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/43bf0e426e9bf12945463de98856c221831faf66.lock
+2025-11-25 19:00:50,850 - DEBUG - Lock 140407538751056 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/43bf0e426e9bf12945463de98856c221831faf66.lock
+2025-11-25 19:00:51,005 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2-9b-it/resolve/main/model.safetensors.index.json HTTP/1.1" 200 39072
+2025-11-25 19:00:51,010 - DEBUG - Attempting to release lock 140407538751056 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/43bf0e426e9bf12945463de98856c221831faf66.lock
+2025-11-25 19:00:51,010 - DEBUG - Lock 140407538751056 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/43bf0e426e9bf12945463de98856c221831faf66.lock
+2025-11-25 19:00:51,190 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/revision/main HTTP/1.1" 200 6265
+2025-11-25 19:00:51,195 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:00:51,196 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:00:51,653 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:00:51,655 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:00:51,979 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/11c9b309abf73637e4b6f9a3fa1e92e615547819/model-00004-of-00004.safetensors HTTP/1.1" 302 0
+2025-11-25 19:00:51,980 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/11c9b309abf73637e4b6f9a3fa1e92e615547819/model-00002-of-00004.safetensors HTTP/1.1" 302 0
+2025-11-25 19:00:51,981 - DEBUG - Attempting to acquire lock 140407548932112 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3349b4960bbc0bf7e47a624e5c520881adb06e2da4bda6ed14b51c7f647fe26c.lock
+2025-11-25 19:00:51,981 - DEBUG - Attempting to acquire lock 140407548935696 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/712a589c333f49f7b6f3870838a9e0ab4b3c0260abd5130e8c54316e6c99640b.lock
+2025-11-25 19:00:51,981 - DEBUG - Lock 140407548932112 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3349b4960bbc0bf7e47a624e5c520881adb06e2da4bda6ed14b51c7f647fe26c.lock
+2025-11-25 19:00:51,982 - DEBUG - Lock 140407548935696 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/712a589c333f49f7b6f3870838a9e0ab4b3c0260abd5130e8c54316e6c99640b.lock
+2025-11-25 19:00:51,991 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/11c9b309abf73637e4b6f9a3fa1e92e615547819/model-00001-of-00004.safetensors HTTP/1.1" 302 0
+2025-11-25 19:00:51,992 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/11c9b309abf73637e4b6f9a3fa1e92e615547819/model-00003-of-00004.safetensors HTTP/1.1" 302 0
+2025-11-25 19:00:51,994 - DEBUG - Attempting to acquire lock 140407550141648 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/a0d4eb4fcbddfe01b0dc7a58386a3980826ededaf0ecd67d1ef38995b89615ba.lock
+2025-11-25 19:00:51,994 - DEBUG - Attempting to acquire lock 140407552843984 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/5a9f84eb9846840802200c6502ccaaebf0a146ee89dcb8822fab795c392dd667.lock
+2025-11-25 19:00:51,994 - DEBUG - Lock 140407550141648 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/a0d4eb4fcbddfe01b0dc7a58386a3980826ededaf0ecd67d1ef38995b89615ba.lock
+2025-11-25 19:00:51,994 - DEBUG - Lock 140407552843984 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/5a9f84eb9846840802200c6502ccaaebf0a146ee89dcb8822fab795c392dd667.lock
+2025-11-25 19:00:52,144 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/xet-read-token/11c9b309abf73637e4b6f9a3fa1e92e615547819 HTTP/1.1" 200 405
+2025-11-25 19:00:52,150 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/xet-read-token/11c9b309abf73637e4b6f9a3fa1e92e615547819 HTTP/1.1" 200 405
+2025-11-25 19:00:52,151 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/xet-read-token/11c9b309abf73637e4b6f9a3fa1e92e615547819 HTTP/1.1" 200 405
+2025-11-25 19:00:52,159 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/xet-read-token/11c9b309abf73637e4b6f9a3fa1e92e615547819 HTTP/1.1" 200 405
+2025-11-25 19:01:18,057 - DEBUG - Attempting to release lock 140407548932112 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3349b4960bbc0bf7e47a624e5c520881adb06e2da4bda6ed14b51c7f647fe26c.lock
+2025-11-25 19:01:18,058 - DEBUG - Lock 140407548932112 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3349b4960bbc0bf7e47a624e5c520881adb06e2da4bda6ed14b51c7f647fe26c.lock
+2025-11-25 19:01:22,393 - DEBUG - Attempting to release lock 140407550141648 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/a0d4eb4fcbddfe01b0dc7a58386a3980826ededaf0ecd67d1ef38995b89615ba.lock
+2025-11-25 19:01:22,393 - DEBUG - Lock 140407550141648 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/a0d4eb4fcbddfe01b0dc7a58386a3980826ededaf0ecd67d1ef38995b89615ba.lock
+2025-11-25 19:01:22,412 - DEBUG - Attempting to release lock 140407548935696 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/712a589c333f49f7b6f3870838a9e0ab4b3c0260abd5130e8c54316e6c99640b.lock
+2025-11-25 19:01:22,412 - DEBUG - Lock 140407548935696 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/712a589c333f49f7b6f3870838a9e0ab4b3c0260abd5130e8c54316e6c99640b.lock
+2025-11-25 19:01:22,630 - DEBUG - Attempting to release lock 140407552843984 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/5a9f84eb9846840802200c6502ccaaebf0a146ee89dcb8822fab795c392dd667.lock
+2025-11-25 19:01:22,630 - DEBUG - Lock 140407552843984 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/5a9f84eb9846840802200c6502ccaaebf0a146ee89dcb8822fab795c392dd667.lock
+2025-11-25 19:01:27,763 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-11-25 19:01:27,765 - DEBUG - Attempting to acquire lock 140407549038928 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/bcab23978ab330a748b67d5bedf21a109f337b5e.lock
+2025-11-25 19:01:27,765 - DEBUG - Lock 140407549038928 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/bcab23978ab330a748b67d5bedf21a109f337b5e.lock
+2025-11-25 19:01:27,928 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 173
+2025-11-25 19:01:27,930 - DEBUG - Attempting to release lock 140407549038928 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/bcab23978ab330a748b67d5bedf21a109f337b5e.lock
+2025-11-25 19:01:27,930 - DEBUG - Lock 140407549038928 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/bcab23978ab330a748b67d5bedf21a109f337b5e.lock
+2025-11-25 19:01:28,092 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-11-25 19:01:28,587 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 19:01:28,588 - DEBUG - Attempting to acquire lock 140407541092432 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/36ba12877e7efaba5252f7b17ab337a59d953563.lock
+2025-11-25 19:01:28,588 - DEBUG - Lock 140407541092432 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/36ba12877e7efaba5252f7b17ab337a59d953563.lock
+2025-11-25 19:01:28,761 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 46996
+2025-11-25 19:01:28,768 - DEBUG - Attempting to release lock 140407541092432 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/36ba12877e7efaba5252f7b17ab337a59d953563.lock
+2025-11-25 19:01:28,768 - DEBUG - Lock 140407541092432 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/36ba12877e7efaba5252f7b17ab337a59d953563.lock
+2025-11-25 19:01:28,933 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 19:01:29,095 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer.model HTTP/1.1" 302 0
+2025-11-25 19:01:29,096 - DEBUG - Attempting to acquire lock 140407548690256 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:01:29,096 - DEBUG - Lock 140407548690256 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:01:29,254 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/xet-read-token/11c9b309abf73637e4b6f9a3fa1e92e615547819 HTTP/1.1" 200 405
+2025-11-25 19:01:29,693 - DEBUG - Attempting to release lock 140407548690256 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:01:29,693 - DEBUG - Lock 140407548690256 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:01:29,854 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer.json HTTP/1.1" 302 0
+2025-11-25 19:01:29,855 - DEBUG - Attempting to acquire lock 140407548350992 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3f289bc05132635a8bc7aca7aa21255efd5e18f3710f43e3cdb96bcd41be4922.lock
+2025-11-25 19:01:29,856 - DEBUG - Lock 140407548350992 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3f289bc05132635a8bc7aca7aa21255efd5e18f3710f43e3cdb96bcd41be4922.lock
+2025-11-25 19:01:30,016 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/xet-read-token/11c9b309abf73637e4b6f9a3fa1e92e615547819 HTTP/1.1" 200 405
+2025-11-25 19:01:30,516 - DEBUG - Attempting to release lock 140407548350992 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3f289bc05132635a8bc7aca7aa21255efd5e18f3710f43e3cdb96bcd41be4922.lock
+2025-11-25 19:01:30,516 - DEBUG - Lock 140407548350992 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/3f289bc05132635a8bc7aca7aa21255efd5e18f3710f43e3cdb96bcd41be4922.lock
+2025-11-25 19:01:30,681 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2025-11-25 19:01:30,839 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/special_tokens_map.json HTTP/1.1" 200 0
+2025-11-25 19:01:30,840 - DEBUG - Attempting to acquire lock 140407548677776 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:01:30,840 - DEBUG - Lock 140407548677776 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:01:30,999 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2-9b-it/resolve/main/special_tokens_map.json HTTP/1.1" 200 636
+2025-11-25 19:01:31,001 - DEBUG - Attempting to release lock 140407548677776 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:01:31,001 - DEBUG - Lock 140407548677776 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2-9b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:01:31,165 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/chat_template.jinja HTTP/1.1" 404 0
+2025-11-25 19:01:39,151 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-11-25 19:05:09,783 - INFO - PyTorch version 2.6.0 available.
+2025-11-25 19:05:13,048 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-11-25 19:05:13,048 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:05:13,048 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-11-25 19:05:13,048 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:05:13,049 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-11-25 19:05:13,049 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-11-25 19:05:13,049 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:05:13,050 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 19:05:13,050 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-11-25 19:05:13,050 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 19:05:13,050 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 19:05:13,050 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-11-25 19:05:14,680 - INFO - Use pytorch device_name: cuda:0
+2025-11-25 19:05:14,680 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-25 19:05:14,682 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:05:14,899 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 19:05:14,924 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 19:05:15,078 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 19:05:15,101 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 19:05:15,257 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 19:05:15,281 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 19:05:15,429 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-11-25 19:05:15,452 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-11-25 19:05:15,602 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 19:05:15,628 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 19:05:15,779 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-11-25 19:05:15,801 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-11-25 19:05:15,954 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-11-25 19:05:16,102 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-11-25 19:05:16,125 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-11-25 19:05:16,304 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-11-25 19:05:16,326 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 19:05:16,482 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 19:05:16,669 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-11-25 19:05:16,691 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-11-25 19:05:16,853 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6955
+2025-11-25 19:05:18,790 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-11-25 19:05:18,796 - DEBUG - Attempting to acquire lock 139753347351440 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/583327915e2ce21dbdd7c44a90a9dcb2b02559a1.lock
+2025-11-25 19:05:18,796 - DEBUG - Lock 139753347351440 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/583327915e2ce21dbdd7c44a90a9dcb2b02559a1.lock
+2025-11-25 19:05:19,007 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2b-it/resolve/main/config.json HTTP/1.1" 200 627
+2025-11-25 19:05:19,011 - DEBUG - Attempting to release lock 139753347351440 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/583327915e2ce21dbdd7c44a90a9dcb2b02559a1.lock
+2025-11-25 19:05:19,011 - DEBUG - Lock 139753347351440 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/583327915e2ce21dbdd7c44a90a9dcb2b02559a1.lock
+2025-11-25 19:05:19,183 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/model.safetensors HTTP/1.1" 404 0
+2025-11-25 19:05:19,347 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/model.safetensors.index.json HTTP/1.1" 200 0
+2025-11-25 19:05:19,348 - DEBUG - Attempting to acquire lock 139753337374288 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/b8fcee94bedd135b67735027dc217936f7444ab2.lock
+2025-11-25 19:05:19,348 - DEBUG - Lock 139753337374288 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/b8fcee94bedd135b67735027dc217936f7444ab2.lock
+2025-11-25 19:05:19,521 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2b-it/resolve/main/model.safetensors.index.json HTTP/1.1" 200 13489
+2025-11-25 19:05:19,523 - DEBUG - Attempting to release lock 139753337374288 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/b8fcee94bedd135b67735027dc217936f7444ab2.lock
+2025-11-25 19:05:19,523 - DEBUG - Lock 139753337374288 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/b8fcee94bedd135b67735027dc217936f7444ab2.lock
+2025-11-25 19:05:19,693 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/revision/main HTTP/1.1" 200 6137
+2025-11-25 19:05:19,697 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:05:19,698 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 19:05:20,126 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/96988410cbdaeb8d5093d1ebdc5a8fb563e02bad/model-00001-of-00002.safetensors HTTP/1.1" 302 0
+2025-11-25 19:05:20,127 - DEBUG - Attempting to acquire lock 139753347409296 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/561656f892a2a1ca0837ca529c5ce820a72b40f4f563b1cd0a1acc0b3899c30c.lock
+2025-11-25 19:05:20,128 - DEBUG - Lock 139753347409296 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/561656f892a2a1ca0837ca529c5ce820a72b40f4f563b1cd0a1acc0b3899c30c.lock
+2025-11-25 19:05:20,300 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/xet-read-token/96988410cbdaeb8d5093d1ebdc5a8fb563e02bad HTTP/1.1" 200 405
+2025-11-25 19:05:20,313 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/96988410cbdaeb8d5093d1ebdc5a8fb563e02bad/model-00002-of-00002.safetensors HTTP/1.1" 302 0
+2025-11-25 19:05:20,314 - DEBUG - Attempting to acquire lock 139753346636752 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/20fe2ee66bf1361241a6c522091a5e0328fc6c1703f93734889fa381fcf8760c.lock
+2025-11-25 19:05:20,314 - DEBUG - Lock 139753346636752 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/20fe2ee66bf1361241a6c522091a5e0328fc6c1703f93734889fa381fcf8760c.lock
+2025-11-25 19:05:20,480 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/xet-read-token/96988410cbdaeb8d5093d1ebdc5a8fb563e02bad HTTP/1.1" 200 405
+2025-11-25 19:05:22,401 - DEBUG - Attempting to release lock 139753346636752 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/20fe2ee66bf1361241a6c522091a5e0328fc6c1703f93734889fa381fcf8760c.lock
+2025-11-25 19:05:22,401 - DEBUG - Lock 139753346636752 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/20fe2ee66bf1361241a6c522091a5e0328fc6c1703f93734889fa381fcf8760c.lock
+2025-11-25 19:05:30,262 - DEBUG - Attempting to release lock 139753347409296 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/561656f892a2a1ca0837ca529c5ce820a72b40f4f563b1cd0a1acc0b3899c30c.lock
+2025-11-25 19:05:30,263 - DEBUG - Lock 139753347409296 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/561656f892a2a1ca0837ca529c5ce820a72b40f4f563b1cd0a1acc0b3899c30c.lock
+2025-11-25 19:05:31,452 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-11-25 19:05:31,453 - DEBUG - Attempting to acquire lock 139753336857808 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/fb47c6d9115ff49c891f9b4b495a86bfd5b0dc73.lock
+2025-11-25 19:05:31,453 - DEBUG - Lock 139753336857808 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/fb47c6d9115ff49c891f9b4b495a86bfd5b0dc73.lock
+2025-11-25 19:05:31,618 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2b-it/resolve/main/generation_config.json HTTP/1.1" 200 137
+2025-11-25 19:05:31,620 - DEBUG - Attempting to release lock 139753336857808 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/fb47c6d9115ff49c891f9b4b495a86bfd5b0dc73.lock
+2025-11-25 19:05:31,620 - DEBUG - Lock 139753336857808 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/fb47c6d9115ff49c891f9b4b495a86bfd5b0dc73.lock
+2025-11-25 19:05:31,775 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-11-25 19:05:32,095 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 19:05:32,096 - DEBUG - Attempting to acquire lock 139754246148560 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/035fa0e287781a32a1bb2ff9f5cfd6cb5522be70.lock
+2025-11-25 19:05:32,099 - DEBUG - Lock 139754246148560 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/035fa0e287781a32a1bb2ff9f5cfd6cb5522be70.lock
+2025-11-25 19:05:32,253 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 34173
+2025-11-25 19:05:32,259 - DEBUG - Attempting to release lock 139754246148560 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/035fa0e287781a32a1bb2ff9f5cfd6cb5522be70.lock
+2025-11-25 19:05:32,259 - DEBUG - Lock 139754246148560 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/035fa0e287781a32a1bb2ff9f5cfd6cb5522be70.lock
+2025-11-25 19:05:32,419 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 19:05:32,580 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/tokenizer.model HTTP/1.1" 302 0
+2025-11-25 19:05:32,581 - DEBUG - Attempting to acquire lock 139753336841488 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:05:32,581 - DEBUG - Lock 139753336841488 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:05:32,735 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/xet-read-token/96988410cbdaeb8d5093d1ebdc5a8fb563e02bad HTTP/1.1" 200 405
+2025-11-25 19:05:33,344 - DEBUG - Attempting to release lock 139753336841488 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:05:33,345 - DEBUG - Lock 139753336841488 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2.lock
+2025-11-25 19:05:33,510 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/tokenizer.json HTTP/1.1" 302 0
+2025-11-25 19:05:33,511 - DEBUG - Attempting to acquire lock 139753336846160 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/c15eb04bc5ad609fb26533e8525302c5640a945e5f67f65b7c849900acda7d99.lock
+2025-11-25 19:05:33,512 - DEBUG - Lock 139753336846160 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/c15eb04bc5ad609fb26533e8525302c5640a945e5f67f65b7c849900acda7d99.lock
+2025-11-25 19:05:33,668 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2b-it/xet-read-token/96988410cbdaeb8d5093d1ebdc5a8fb563e02bad HTTP/1.1" 200 405
+2025-11-25 19:05:34,021 - DEBUG - Attempting to release lock 139753336846160 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/c15eb04bc5ad609fb26533e8525302c5640a945e5f67f65b7c849900acda7d99.lock
+2025-11-25 19:05:34,021 - DEBUG - Lock 139753336846160 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/c15eb04bc5ad609fb26533e8525302c5640a945e5f67f65b7c849900acda7d99.lock
+2025-11-25 19:05:34,191 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2025-11-25 19:05:34,368 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/special_tokens_map.json HTTP/1.1" 200 0
+2025-11-25 19:05:34,369 - DEBUG - Attempting to acquire lock 139753336813584 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:05:34,369 - DEBUG - Lock 139753336813584 acquired on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:05:34,525 - DEBUG - https://huggingface.co:443 "GET /google/gemma-2b-it/resolve/main/special_tokens_map.json HTTP/1.1" 200 636
+2025-11-25 19:05:34,526 - DEBUG - Attempting to release lock 139753336813584 on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:05:34,526 - DEBUG - Lock 139753336813584 released on /home/petrova_am/.cache/huggingface/hub/.locks/models--google--gemma-2b-it/8d6368f7e735fbe4781bf6e956b7c6ad0586df80.lock
+2025-11-25 19:05:34,720 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2b-it/resolve/main/chat_template.jinja HTTP/1.1" 404 0
+2025-11-25 19:05:39,119 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping
+2025-11-25 19:06:08,497 - DEBUG - https://huggingface.co:443 "HEAD /jbloom/Gemma-2b-IT-Residual-Stream-SAEs/resolve/main/gemma_2b_it_blocks.12.hook_resid_post_16384/cfg.json HTTP/1.1" 307 0
+2025-11-25 19:06:08,643 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/jbloom/Gemma-2b-IT-Residual-Stream-SAEs/16e463a92df02f0463e94555519ebafe11067cab/gemma_2b_it_blocks.12.hook_resid_post_16384%2Fcfg.json HTTP/1.1" 200 0
+2025-11-25 19:06:08,831 - DEBUG - https://huggingface.co:443 "HEAD /jbloom/Gemma-2b-IT-Residual-Stream-SAEs/resolve/main/gemma_2b_it_blocks.12.hook_resid_post_16384/sae_weights.safetensors HTTP/1.1" 302 0
+2025-11-25 19:06:09,002 - DEBUG - https://huggingface.co:443 "HEAD /jbloom/Gemma-2b-IT-Residual-Stream-SAEs/resolve/main/gemma_2b_it_blocks.12.hook_resid_post_16384/sparsity.safetensors HTTP/1.1" 302 0
+2025-11-25 22:47:02,217 - INFO - PyTorch version 2.6.0 available.
+2025-11-25 22:47:05,506 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.Serializable'>
+2025-11-25 22:47:05,506 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 22:47:05,507 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.FrozenSerializable'>
+2025-11-25 22:47:05,507 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 22:47:05,507 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.serializable.SimpleSerializable'>
+2025-11-25 22:47:05,508 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.serialization.yaml_serialization.YamlSerializable'>
+2025-11-25 22:47:05,508 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 22:47:05,508 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 22:47:05,508 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.BoundInfo'>
+2025-11-25 22:47:05,508 - DEBUG - parents: [<class 'simple_parsing.helpers.serialization.serializable.Serializable'>, <class 'simple_parsing.helpers.serialization.serializable.SerializableMixin'>]
+2025-11-25 22:47:05,508 - DEBUG - Parent class <class 'simple_parsing.helpers.serialization.serializable.Serializable'> has decode_into_subclasses = False
+2025-11-25 22:47:05,508 - DEBUG - Registering a new Serializable subclass: <class 'simple_parsing.helpers.hparams.hyperparameters.HyperParameters'>
+2025-11-25 22:47:07,388 - INFO - Use pytorch device_name: cuda:0
+2025-11-25 22:47:07,388 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-25 22:47:07,389 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-11-25 22:47:07,608 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 22:47:07,631 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 22:47:07,781 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 22:47:07,803 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 22:47:07,954 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-11-25 22:47:07,978 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-11-25 22:47:08,133 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-11-25 22:47:08,156 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-11-25 22:47:08,310 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-11-25 22:47:08,333 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-11-25 22:47:08,485 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-11-25 22:47:08,508 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-11-25 22:47:08,660 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-11-25 22:47:08,811 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-11-25 22:47:08,835 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-11-25 22:47:09,016 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-11-25 22:47:09,039 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 22:47:09,200 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 22:47:09,424 - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-11-25 22:47:09,447 - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-11-25 22:47:09,602 - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6955
+2025-11-25 22:47:11,486 - WARNING - You tried to specify center_unembed=True for a model using logit softcap, but this can't be done! Softcapping is not invariant upon adding a constant Setting center_unembed=False instead.
+2025-11-25 22:47:11,868 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/config.json HTTP/1.1" 200 0
+2025-11-25 22:47:17,110 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-11-25 22:47:17,276 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-11-25 22:47:17,733 - DEBUG - https://huggingface.co:443 "HEAD /google/gemma-2-9b-it/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-11-25 22:47:17,891 - DEBUG - https://huggingface.co:443 "GET /api/models/google/gemma-2-9b-it/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-11-25 22:47:29,462 - WARNING - You are not using LayerNorm, so the writing weights can't be centered! Skipping

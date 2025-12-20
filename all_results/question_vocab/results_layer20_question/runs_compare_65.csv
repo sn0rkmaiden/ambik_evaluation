@@ -1,0 +1,14 @@
+run_file,model,dataset,sae_id,mode,seed,compute_max_per_turn,steering_used,n_examples,threshold,nli_threshold,feature,strength,max_act,resolved_proxy_rate,nli_resolved_rate,avg_num_questions,necessity_precision,necessity_recall,resolved_dialog_rate,overall_weighted_score,overall_weighted_score_nli,nli_overall_similarity
+ambik_9b_steered_seed50_act4_feat229_str1.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,229,1.0,4.0,0.28,0.04,1.29,0.4921,0.6596,,0.6067,0.4927,0.2897
+ambik_9b_steered_seed50_act4_feat229_str15.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,229,15.0,4.0,0.27,0.06,1.41,0.4737,0.766,,0.6431,0.5411,0.2829
+ambik_9b_baseline_seed50_act4_featNone.json,gemma-2-9b-it,ambik_calib_100.csv,,proxy,50,,False,100,0.65,0.65,,,,0.22,0.04,1.06,0.459,0.5957,,0.5786,0.4607,0.2546
+ambik_9b_steered_seed50_act4_feat748_str15.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,748,15.0,4.0,0.23,0.06,1.25,0.5147,0.7447,,0.6461,0.5334,0.2601
+ambik_9b_steered_seed50_act4_feat480_str15.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,480,15.0,4.0,0.23,0.05,1.18,0.5147,0.7447,,0.6465,0.5349,0.2714
+ambik_9b_steered_seed50_act4_feat229_str3.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,229,3.0,4.0,0.25,0.08,1.28,0.4921,0.6596,,0.6141,0.5121,0.3357
+ambik_9b_steered_seed50_act4_feat480_str3.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,480,3.0,4.0,0.27,0.06,1.23,0.4844,0.6596,,0.6121,0.5012,0.2986
+ambik_9b_steered_seed50_act4_feat748_str3.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,748,3.0,4.0,0.26,0.04,1.18,0.5079,0.6809,,0.622,0.5192,0.3093
+ambik_9b_steered_seed50_act4_feat480_str30.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,480,30.0,4.0,0.23,0.06,0.71,0.5091,0.5957,,0.6019,0.4936,0.2793
+ambik_9b_steered_seed50_act4_feat748_str1.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,748,1.0,4.0,0.27,0.05,1.15,0.5254,0.6596,,0.6142,0.5107,0.3197
+ambik_9b_steered_seed50_act4_feat229_str30.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,229,30.0,4.0,0.18,0.05,1.0,0.4706,0.6809,,0.6111,0.4978,0.221
+ambik_9b_steered_seed50_act4_feat480_str1.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,480,1.0,4.0,0.24,0.03,1.26,0.4844,0.6596,,0.5961,0.4869,0.2704
+ambik_9b_steered_seed50_act4_feat748_str30.0.json,gemma-2-9b-it,ambik_calib_100.csv,blocks.20.hook_resid_post,proxy,50,False,True,100,0.65,0.65,748,30.0,4.0,0.26,0.03,1.26,0.4699,0.8298,,0.6911,0.5733,0.2186
