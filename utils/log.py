@@ -1,8 +1,14 @@
 from datetime import datetime
 import logging
+import os
 
+log_dir = "log"
+os.makedirs(log_dir, exist_ok=True)
 
-logging.basicConfig(filename='log/'+str(datetime.now().date())+'.log', level=logging.DEBUG,
+log_path = os.path.join(log_dir, f"{datetime.now().date()}.log")
+
+logging.basicConfig(filename=log_path,
+                    level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def readable_log(message):
