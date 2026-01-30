@@ -10,7 +10,7 @@ from transformer_lens import HookedTransformer
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 from sae_lens import SAE
 from langchain_nebius import ChatNebius
-from gemma_adapter import generate_with_steering
+from gemma_adapter import generate_with_steering, generate_with_multi_feature_steering
 
 class LLM:
     def __init__(self, cache = None) -> None:
@@ -163,14 +163,15 @@ class LLM:
         llm_log(input, output, **kwargs)
         pass
 
+
 class HookedGEMMA(LLM):
     """
     HookedTransformer + SAE wrapper for Gemma that follows this repo's LLM interface.
 
     Features:
-    - Optional SAE steering on a single feature (index).
-    - Optional per-prompt max activation estimation (no ActivationStore required).
-    - Falls back cleanly to unsteered generation when no feature is provided.
+    - Optional SAE steering on a single feature (index), OR multiple features at once.
+    - Optional per-prompt max activation estimation (no ActivationStore needed).
+    - Falls back cleanly to unsteered generation when no feature(s) are provided.
 
     Methods:
     - request(prompt, stop=None, **kwargs) -> (output_text, messages)
@@ -189,11 +190,16 @@ class HookedGEMMA(LLM):
         cache: str | None = None,
         device: str | None = None,
         max_new_tokens: int = 100,
-        # steering options
+        # steering options (single feature)
         steering_feature: int | None = None,
         steering_strength: float = 1.0,
         max_act: float | None = None,           # fixed max act (if known)
         compute_max_per_turn: bool = False,     # estimate per prompt if True
+        # steering options (multi-feature)
+        steering_features: list[int] | None = None,
+        steering_weights: list[float] | None = None,
+        normalize_each: bool = False,
+        norm_cap: float | None = None,
     ) -> None:
         super().__init__(cache)
 
@@ -222,12 +228,16 @@ class HookedGEMMA(LLM):
         self.max_act = max_act
         self.compute_max_per_turn = bool(compute_max_per_turn)
 
+        # multi-feature steering config
+        self.steering_features = list(steering_features) if steering_features else []
+        self.steering_weights = list(steering_weights) if steering_weights else None
+        self.normalize_each = bool(normalize_each)
+        self.norm_cap = norm_cap
+
     # ------------------------- helpers -------------------------
 
     def _build_text_from_messages(self, messages: list[dict], force_json: bool) -> str:
-        """
-        Convert OpenAI-style messages into a plain text conversation the Gemma adapter expects.
-        """
+        """Convert OpenAI-style messages into a plain text conversation the Gemma adapter expects."""
         parts = []
         for m in messages:
             role = m.get("role", "").strip().lower()
@@ -239,10 +249,8 @@ class HookedGEMMA(LLM):
             elif role == "assistant":
                 parts.append(f"Assistant: {content}")
             else:
-                # fallback
                 parts.append(f"{role.capitalize()}: {content}")
 
-        # model should speak next:
         parts.append("Assistant:")
         text = "\n".join(parts)
         if force_json:
@@ -250,23 +258,15 @@ class HookedGEMMA(LLM):
         return text
 
     def _extract_assistant_answer(self, decoded: str, prompt_text: str) -> str:
-        """
-        Strip the prompt echo if present; else take text after the last 'Assistant:'.
-        """
+        """Strip the prompt echo if present; else take text after the last 'Assistant:'."""
         if decoded.startswith(prompt_text):
-            # plain suffix
             return decoded[len(prompt_text):].strip()
-
-        # else, split by the last "Assistant:" marker
         if "Assistant:" in decoded:
             return decoded.split("Assistant:")[-1].strip()
         return decoded.strip()
 
     def _estimate_feature_max_for_prompt(self, prompt_text: str, feature_idx: int) -> float:
-        """
-        Compute a quick per-prompt max activation for `feature_idx` by running to the SAE hook
-        and encoding into feature space. No ActivationStore needed.
-        """
+        """Compute per-prompt max activation for one feature."""
         hook_name = self.sae.cfg.metadata.hook_name
         try:
             prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
@@ -282,34 +282,78 @@ class HookedGEMMA(LLM):
             max_val = feats[:, feature_idx].max().item()
         return float(max_val if max_val != float("inf") else 1.0)
 
+    def _estimate_feature_max_for_prompt_multi(self, prompt_text: str, feature_indices: list[int]) -> list[float]:
+        """Compute per-prompt max activation for several features in one forward pass."""
+        if not feature_indices:
+            return []
+
+        hook_name = self.sae.cfg.metadata.hook_name
+        try:
+            prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
+        except Exception:
+            prepend_bos = False
+
+        toks = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
+        with torch.no_grad():
+            _, cache = self.model.run_with_cache(toks, names_filter=[hook_name])
+            sae_in = cache[hook_name]
+            feats = self.sae.encode(sae_in)              # [batch, seq, n_feat]
+            feats = feats.reshape(-1, feats.shape[-1])   # flatten batch+seq
+            idxs = torch.tensor([int(i) for i in feature_indices], device=feats.device)
+            max_vals = feats[:, idxs].max(dim=0).values
+        return [float(v.item()) for v in max_vals]
+
     # ------------------------- main API -------------------------
 
     def request(self, prompt, stop=None, **kwargs):
         """Return (assistant_text, messages) — mirrors other LLMs here."""
-        # Build messages list (for cache compatibility)
         if "previous_message" in kwargs and isinstance(kwargs["previous_message"], list):
             messages = kwargs["previous_message"] + [{"role": "user", "content": prompt}]
         else:
             messages = [{"role": "user", "content": prompt}]
 
-        # cache hit?
         cached = self.from_cache(messages)
         if cached:
             messages.append({"role": "assistant", "content": cached})
             return cached, messages
 
-        # Build text prompt expected by our steered generator
         force_json = bool(kwargs.get("json_format", False))
         prompt_text = self._build_text_from_messages(messages, force_json)
-
-        # Decide BOS policy from SAE metadata
         prepend_bos = bool(getattr(self.sae.cfg.metadata, "prepend_bos", False))
 
-        # Choose steered vs unsteered
-        do_steer = self.steering_feature is not None
+        do_multi = len(self.steering_features) > 0
+        do_single = (self.steering_feature is not None) and (not do_multi)
 
-        if do_steer:
-            # pick max_act (fixed or estimated)
+        if do_multi:
+            feats = [int(f) for f in self.steering_features]
+            if (not self.compute_max_per_turn) and (self.max_act is not None):
+                max_acts = [float(self.max_act)] * len(feats)
+            else:
+                try:
+                    max_acts = self._estimate_feature_max_for_prompt_multi(prompt_text, feats)
+                except Exception:
+                    max_acts = [1.0] * len(feats)
+
+            try:
+                original_prepend = getattr(self.sae.cfg.metadata, "prepend_bos", False)
+                self.sae.cfg.metadata.prepend_bos = prepend_bos
+
+                decoded = generate_with_multi_feature_steering(
+                    model=self.model,
+                    sae=self.sae,
+                    prompt=prompt_text,
+                    steering_features=feats,
+                    max_acts=max_acts,
+                    steering_strength=float(self.steering_strength),
+                    feature_weights=self.steering_weights,
+                    normalize_each=self.normalize_each,
+                    norm_cap=self.norm_cap,
+                    max_new_tokens=self.max_new_tokens,
+                )
+            finally:
+                self.sae.cfg.metadata.prepend_bos = original_prepend
+
+        elif do_single:
             turn_max = self.max_act
             if self.compute_max_per_turn or turn_max is None:
                 try:
@@ -317,9 +361,7 @@ class HookedGEMMA(LLM):
                 except Exception:
                     turn_max = 1.0
 
-            # run steered generation
             try:
-                # Ensure adapter and llm agree on BOS policy for tokenization
                 original_prepend = getattr(self.sae.cfg.metadata, "prepend_bos", False)
                 self.sae.cfg.metadata.prepend_bos = prepend_bos
 
@@ -334,8 +376,8 @@ class HookedGEMMA(LLM):
                 )
             finally:
                 self.sae.cfg.metadata.prepend_bos = original_prepend
+
         else:
-            # unsteered path
             with torch.no_grad():
                 toks = self.model.to_tokens(prompt_text, prepend_bos=prepend_bos)
                 gen_out = self.model.generate(
@@ -344,17 +386,14 @@ class HookedGEMMA(LLM):
                     stop_at_eos=False if self.model.cfg.device == "mps" else True,
                     prepend_bos=prepend_bos,
                 )
-                # HookedTransformer exposes tokenizer.decode
                 decoded = self.model.tokenizer.decode(gen_out[0])
 
-        # Post-process: only keep assistant answer (no prompt echo)
         assistant_text = self._extract_assistant_answer(decoded, prompt_text)
-
-        # log + cache + return
         super().log(prompt_text, assistant_text, model=self.model_name)
         self.save_to_cache(messages, assistant_text)
         messages.append({"role": "assistant", "content": assistant_text})
         return assistant_text, messages
+
 
 class CustomLLM(LLM):
     def __init__(self, name, api_key=None, cache=None) -> None:

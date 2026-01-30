@@ -73,6 +73,81 @@ def generate_with_steering(
 
     return model.tokenizer.decode(output[0])
 
+
+# ----------------- Multi-feature steering -----------------
+
+def steering_multi(activations, hook, steering_strength=1.0, steering_vector=None):
+    """Add a *pre-combined* steering vector (shape [d_model]) to activations."""
+    return activations + steering_strength * steering_vector
+
+
+def generate_with_multi_feature_steering(
+    model,
+    sae,
+    prompt,
+    steering_features,
+    max_acts,
+    steering_strength=1.0,
+    feature_weights=None,
+    normalize_each=False,
+    norm_cap=None,
+    max_new_tokens=95,
+):
+    """Steer *multiple* SAE features at once by summing their decoder directions.
+
+    steering_features: list[int]
+    max_acts: list[float] of same length (per-feature scaling, e.g., per-prompt max activation)
+    feature_weights: optional list[float] of same length (additional weights)
+    """
+    if len(steering_features) == 0:
+        raise ValueError('steering_features must be non-empty')
+    if len(max_acts) != len(steering_features):
+        raise ValueError('max_acts must match steering_features length')
+
+    input_ids = model.to_tokens(prompt, prepend_bos=sae.cfg.metadata.prepend_bos)
+
+    device = model.cfg.device
+    feat_idx = torch.tensor(list(map(int, steering_features)), device=device)
+    vecs = sae.W_dec[feat_idx].to(device)  # [k, d_model]
+
+    # Optional per-feature normalization (useful when combining many features)
+    if normalize_each:
+        vecs = vecs / (vecs.norm(dim=-1, keepdim=True) + 1e-8)
+
+    coeffs = torch.tensor(list(map(float, max_acts)), device=device, dtype=vecs.dtype)
+    if feature_weights is not None:
+        if len(feature_weights) != len(steering_features):
+            raise ValueError('feature_weights must match steering_features length')
+        w = torch.tensor(list(map(float, feature_weights)), device=device, dtype=vecs.dtype)
+        coeffs = coeffs * w
+
+    combined = (coeffs[:, None] * vecs).sum(dim=0)  # [d_model]
+
+    # Optional norm cap on the combined vector to avoid blow-up as k grows
+    if norm_cap is not None:
+        cap = float(norm_cap)
+        n = combined.norm() + 1e-8
+        if n.item() > cap:
+            combined = combined * (cap / n)
+
+    steering_hook = partial(
+        steering_multi,
+        steering_vector=combined,
+        steering_strength=steering_strength,
+    )
+
+    with model.hooks(fwd_hooks=[(sae.cfg.metadata.hook_name, steering_hook)]):
+        output = model.generate(
+            input_ids,
+            max_new_tokens=max_new_tokens,
+            temperature=0.7,
+            top_p=0.9,
+            stop_at_eos=False if model.cfg.device == "mps" else True,
+            prepend_bos=sae.cfg.metadata.prepend_bos,
+        )
+
+    return model.tokenizer.decode(output[0])
+
 def run_multiturn_conversation_generic(
     model,
     sae,

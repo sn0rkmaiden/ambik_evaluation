@@ -104,6 +104,52 @@ def parse_steering_features(args) -> list[int]:
     feats = sorted(set(feats))
     return feats
 
+
+
+def parse_steering_weights(args, feature_list: list[int]) -> list[float] | None:
+    """Parse optional weights for multi-feature steering.
+
+    --steering_weights can be:
+      * comma/space-separated floats (length 1 or len(feature_list))
+      * a path to .json containing either a list of floats or a dict {feature_id: weight}
+    """
+    raw = getattr(args, 'steering_weights', None)
+    if not raw:
+        return None
+
+    raw = raw.strip()
+    # File path
+    if os.path.exists(raw):
+        with open(raw, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            # allow keys as strings or ints
+            weights = []
+            for fid in feature_list:
+                if str(fid) in data:
+                    weights.append(float(data[str(fid)]))
+                elif fid in data:
+                    weights.append(float(data[fid]))
+                else:
+                    raise ValueError(f"Missing weight for feature {fid} in {raw}")
+            return weights
+        if isinstance(data, list):
+            if len(data) == 1:
+                return [float(data[0])] * len(feature_list)
+            if len(data) != len(feature_list):
+                raise ValueError(f"Weight list in {raw} has length {len(data)} but expected {len(feature_list)}")
+            return [float(x) for x in data]
+        raise ValueError(f"Unsupported JSON structure in {raw} for steering weights")
+
+    # Inline list
+    parts = [p for p in re.split(r"[,\s]+", raw) if p]
+    vals = [float(p) for p in parts]
+    if len(vals) == 1:
+        return vals * len(feature_list)
+    if len(vals) != len(feature_list):
+        raise ValueError(f"Got {len(vals)} weights but {len(feature_list)} steering features")
+    return vals
+
 def build_final_prompt(instruction: str, clarifying_questions: list[str], provider_reply: str | None) -> str:
     """
     Build the final prompt for the robot model to generate a plan of actions.
@@ -321,6 +367,14 @@ def main():
     parser.add_argument('--steering_features', type=str, default=None,
                     help='Either comma/space-separated feature ids '
                             'or a path to a file (txt/json) containing feature ids.')
+    parser.add_argument('--steering_features_mode', choices=['sweep','combine'], default='sweep',
+                        help="When multiple features are provided via --steering_features: 'sweep' runs one eval per feature; 'combine' steers them all at once.")
+    parser.add_argument('--steering_weights', type=str, default=None,
+                        help="Optional weights for multi-feature steering: comma/space-separated floats, or a path to .json (list or dict {feature_id: weight}).")
+    parser.add_argument('--steering_normalize_each', action='store_true',
+                        help="(combine mode) L2-normalize each feature's decoder direction before combining.")
+    parser.add_argument('--steering_norm_cap', type=float, default=None,
+                        help="(combine mode) Optional L2 norm cap for the combined steering vector.")
     parser.add_argument('--steering_strength', type=float, default=1.0,
                         help='Steering strength multiplier')
     parser.add_argument('--sae_release', type=str, default='gemma-2b-it-res-jb',
@@ -343,6 +397,7 @@ def main():
 
     model_name = args.model_name.strip()
     feature_list = parse_steering_features(args)
+    weights = parse_steering_weights(args, feature_list)
 
     # --- IO paths ---
     if args.dataset_csv is None:
@@ -357,20 +412,62 @@ def main():
 
     output_file = None
 
-     # --- Multi-feature steering mode ---
+    # --- Multi-feature steering mode ---
     if len(feature_list) > 1:
         if 'gemma' not in model_name.lower():
             raise ValueError(
                 "Multiple steering features are only supported for Gemma models. "
-                "Got model_name={model_name!r}."
+                f"Got model_name={model_name!r}."
             )
-
-        print(f">>> Multi-feature steering mode with features: {feature_list}")
 
         root, ext = os.path.splitext(base_output_file)
         if not ext:
             ext = ".json"
 
+        if args.steering_features_mode == 'combine':
+            out_json = f"{root}_multi{len(feature_list)}_str{args.steering_strength}{ext}"
+            cache_path = f"log/gemma_cache_multi.pkl"
+
+            print(f">>> Combined multi-feature steering with features: {feature_list}")
+            if weights is not None:
+                print(f">>> Using weights: {weights}")
+
+            model = HookedGEMMA(
+                model_name=args.gemma_model,
+                sae_release=args.sae_release,
+                sae_id=args.sae_id,
+                cache=cache_path,
+                max_new_tokens=100,
+                steering_features=feature_list,
+                steering_weights=weights,
+                steering_strength=args.steering_strength,
+                max_act=(args.max_act if args.max_act is not None else None),
+                compute_max_per_turn=args.compute_max_per_turn,
+                normalize_each=args.steering_normalize_each,
+                norm_cap=args.steering_norm_cap,
+            )
+
+            print(f">>> Running evaluation (combined), saving to {out_json}")
+            run_eval(
+                dataset_path,
+                out_json,
+                num_examples=args.num_examples,
+                seed=args.seed,
+                mode=args.mode,
+                model=model,
+                threshold=args.threshold,
+                nli_threshold=args.nli_threshold,
+            )
+
+            del model
+            gc.collect()
+            torch.cuda.empty_cache()
+            if os.path.exists(cache_path):
+                os.remove(cache_path)
+            return
+
+        # default: sweep
+        print(f">>> Multi-feature steering sweep with features: {feature_list}")
         for fid in feature_list:
             out_json = f"{root}_feat{fid}_str{args.steering_strength}{ext}"
             cache_path = f"log/gemma_cache_feat{fid}.pkl"
@@ -408,9 +505,9 @@ def main():
                 os.remove(cache_path)
 
         return
-    
+
     # Single-feature or no-steering mode
-    
+
     print(">>> Loading LLM")
 
     use_steering_flag = args.use_steering or (len(feature_list) == 1)
