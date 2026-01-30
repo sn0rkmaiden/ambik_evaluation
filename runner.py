@@ -355,6 +355,8 @@ def main():
     else:
         base_output_file = args.out_json
 
+    output_file = None
+
      # --- Multi-feature steering mode ---
     if len(feature_list) > 1:
         if 'gemma' not in model_name.lower():
@@ -443,7 +445,7 @@ def main():
         raise ValueError(f"Unknown model name: {model_name}")
 
     # Single run output
-    if not output_file:
+    if output_file is None:
         output_file = base_output_file
 
     run_eval(
