@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\caption{AmbiK resolved_proxy: cluster steering vs best single-feature steering}
+\label{tab:cluster_vs_single_strength}
+\begin{tabular}{llllllll}
+\toprule
+Model & Base & Layer & Cluster & Str1 & Str3 & Str5 & Str10 \\
+\midrule
+2B & 0.080 & 12 & 0 & 0.075 & 0.100 & 0.055 & 0.000 \\
+2B & 0.080 & 12 & 1 & 0.075 & 0.055 & 0.020 & 0.010 \\
+2B & 0.080 & 12 & 2 & 0.040 & 0.080 & 0.090 & 0.055 \\
+9B & 0.060 & 9 & 0 & 0.115 & 0.105 & 0.060 & 0.000 \\
+9B & 0.060 & 9 & 1 & 0.115 & 0.095 & 0.005 & 0.000 \\
+9B & 0.060 & 9 & 2 & 0.120 & 0.130 & 0.130 & 0.090 \\
+9B & 0.060 & 9 & 4 & 0.140 & 0.200 & 0.210 & 0.000 \\
+9B & 0.060 & 20 & 2 & 0.150 & 0.110 & 0.170 & 0.010 \\
+9B & 0.060 & 31 & 1 & 0.120 & 0.140 & 0.120 & 0.100 \\
+2B & 0.080 & 12 & best_clar & 0.100 & 0.060 & - & - \\
+2B & 0.080 & 12 & best_question & 0.110 & 0.030 & - & 0.000 \\
+9B & 0.060 & 20 & best_clar & 0.150 & 0.140 & - & - \\
+9B & 0.060 & 20 & best_question & 0.150 & 0.160 & - & - \\
+9B & 0.060 & 31 & best_clar & 0.160 & 0.160 & - & 0.150 \\
+\bottomrule
+\end{tabular}
+\end{table}
